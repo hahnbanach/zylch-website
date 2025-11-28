@@ -3,36 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Technology - How Zylch AI works under the hood.">
+    <meta name="description" content="Zylch Technology - Semantic memory, multi-agent architecture, and AI that truly understands you.">
     <title>Technology - Zylch AI</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
+        /* CSS Variables */
+        :root {
+            --bg-primary: #ffffff;
+            --bg-dark: #1e1e2e;
+            --text-primary: #1a1a1a;
+            --text-muted: #888888;
+            --text-light: #e4e4e7;
+            --accent: #4a9eff;
+            --accent-green: #27ca3f;
+            --accent-orange: #ff9f43;
+            --radius: 24px;
+            --radius-sm: 12px;
+        }
+
+        /* Reset */
         *, *::before, *::after {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
 
+        /* Base */
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: #ffffff;
-            color: #1a1a1a;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
             -webkit-font-smoothing: antialiased;
         }
 
+        /* Navigation */
+        .nav {
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
         .logo {
-            font-size: 2.5rem;
+            font-size: 1.5rem;
             font-weight: 600;
             letter-spacing: -0.02em;
-            margin-bottom: 2rem;
             text-decoration: none;
             color: inherit;
         }
@@ -41,34 +65,883 @@
             opacity: 0.8;
         }
 
-        h1 {
-            font-size: 1.5rem;
-            font-weight: 500;
-            color: #888888;
-            margin-bottom: 1rem;
+        .back-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
         }
 
-        p {
-            color: #888888;
+        .back-link:hover {
+            color: var(--text-primary);
+        }
+
+        /* Container */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Section */
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section-light {
+            background: var(--bg-primary);
+            color: var(--text-primary);
+        }
+
+        .section-dark {
+            background: var(--bg-dark);
+            color: var(--text-light);
+        }
+
+        .section-dark .text-muted {
+            color: #a1a1aa;
+        }
+
+        /* Typography */
+        .label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        .label-soon {
+            background: var(--accent-orange);
+            color: #fff;
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.7rem;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
             margin-bottom: 2rem;
         }
 
-        a.back {
-            color: #666666;
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: color 0.2s ease;
+        h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
         }
 
-        a.back:hover {
-            color: #1a1a1a;
+        h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--text-primary);
+        }
+
+        .section-dark h3 {
+            color: var(--text-light);
+        }
+
+        p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-muted);
+        }
+
+        .section-dark p {
+            color: #a1a1aa;
+        }
+
+        p:last-child {
+            margin-bottom: 0;
+        }
+
+        .lead {
+            font-size: 1.3rem;
+            line-height: 1.6;
+        }
+
+        strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .section-dark strong {
+            color: var(--text-light);
+        }
+
+        .highlight {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        /* Feature Grid */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .feature-item {
+            padding: 1.5rem;
+            background: rgba(74, 158, 255, 0.05);
+            border-radius: var(--radius-sm);
+            border-left: 3px solid var(--accent);
+        }
+
+        .section-dark .feature-item {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .feature-item h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-item p {
+            font-size: 0.95rem;
+            margin-bottom: 0;
+        }
+
+        /* Tech Diagram */
+        .tech-diagram {
+            background: var(--bg-dark);
+            border-radius: var(--radius-sm);
+            padding: 2rem;
+            margin: 2rem 0;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--text-light);
+            overflow-x: auto;
+        }
+
+        .section-dark .tech-diagram {
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .tech-diagram .flow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tech-diagram .node {
+            background: rgba(74, 158, 255, 0.2);
+            border: 1px solid var(--accent);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            white-space: nowrap;
+        }
+
+        .tech-diagram .arrow {
+            color: var(--accent);
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: rgba(74, 158, 255, 0.05);
+            border-radius: var(--radius-sm);
+        }
+
+        .section-dark .stat-item {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .section-dark .stat-label {
+            color: #a1a1aa;
+        }
+
+        /* Agent List */
+        .agent-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .agent-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: var(--radius-sm);
+        }
+
+        .agent-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--accent) 0%, #6366f1 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .agent-info h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+            color: var(--text-light);
+        }
+
+        .agent-info p {
+            font-size: 0.85rem;
+            margin: 0;
+        }
+
+        /* Permission Layers */
+        .permission-layers {
+            margin: 2rem 0;
+        }
+
+        .permission-layer {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 1.5rem;
+            margin-bottom: 0.5rem;
+            border-radius: var(--radius-sm);
+        }
+
+        .permission-layer.read {
+            background: rgba(39, 202, 63, 0.1);
+            border-left: 3px solid var(--accent-green);
+        }
+
+        .permission-layer.write {
+            background: rgba(74, 158, 255, 0.1);
+            border-left: 3px solid var(--accent);
+        }
+
+        .permission-layer.action {
+            background: rgba(255, 159, 67, 0.1);
+            border-left: 3px solid var(--accent-orange);
+        }
+
+        .permission-badge {
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            flex-shrink: 0;
+        }
+
+        .permission-layer.read .permission-badge {
+            background: var(--accent-green);
+            color: #fff;
+        }
+
+        .permission-layer.write .permission-badge {
+            background: var(--accent);
+            color: #fff;
+        }
+
+        .permission-layer.action .permission-badge {
+            background: var(--accent-orange);
+            color: #fff;
+        }
+
+        .permission-layer p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        /* Channel Icons */
+        .channel-grid {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .channel-item {
+            text-align: center;
+        }
+
+        .channel-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(74, 158, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin: 0 auto 0.5rem;
+            border: 2px solid transparent;
+            transition: all 0.2s ease;
+        }
+
+        .channel-item:hover .channel-icon {
+            border-color: var(--accent);
+            transform: scale(1.1);
+        }
+
+        .channel-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* Confidence Visualization */
+        .confidence-demo {
+            background: var(--bg-dark);
+            border-radius: var(--radius-sm);
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .confidence-row {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .confidence-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .confidence-label {
+            width: 150px;
+            font-size: 0.85rem;
+            color: #a1a1aa;
+            flex-shrink: 0;
+        }
+
+        .confidence-bar-container {
+            flex: 1;
+            height: 24px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .confidence-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent) 0%, var(--accent-green) 100%);
+            border-radius: 12px;
+            transition: width 0.5s ease;
+        }
+
+        .confidence-value {
+            width: 60px;
+            text-align: right;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        /* CTA Section */
+        .cta {
+            padding: 5rem 0;
+            text-align: center;
+            background: var(--bg-primary);
+        }
+
+        .cta h2 {
+            margin-bottom: 1rem;
+        }
+
+        .cta p {
+            max-width: 500px;
+            margin: 0 auto 2rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--text-primary);
+            color: var(--bg-primary);
+            text-decoration: none;
+            border-radius: var(--radius);
+            font-weight: 500;
+            font-size: 1rem;
+            transition: background 0.2s ease;
+        }
+
+        .cta-button:hover {
+            background: #333;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 2rem;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .feature-grid,
+            .agent-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .tech-diagram .flow {
+                flex-direction: column;
+            }
+
+            .tech-diagram .arrow {
+                transform: rotate(90deg);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .section {
+                padding: 3rem 0;
+            }
+
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            .lead {
+                font-size: 1.1rem;
+            }
+
+            .stat-value {
+                font-size: 2rem;
+            }
+
+            .channel-grid {
+                gap: 1rem;
+            }
+
+            .channel-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
         }
     </style>
 </head>
 <body>
-    <a href="index.html" class="logo">Zylch</a>
-    <h1>Coming Soon</h1>
-    <p>We're working on something great.</p>
-    <a href="index.html" class="back">&larr; Back to home</a>
+    <!-- Navigation -->
+    <nav class="nav">
+        <a href="index.html" class="logo">Zylch</a>
+        <a href="index.html" class="back-link">&larr; Back</a>
+    </nav>
+
+    <!-- Section 1: Hero -->
+    <section class="section section-light">
+        <div class="container">
+            <span class="label">Technology</span>
+            <h1>The AI That Remembers</h1>
+
+            <p class="lead">Most AI assistants forget everything the moment a conversation ends. Zylch is different.</p>
+
+            <p>We're building an AI that constructs a <strong>deep memory</strong> of you, your relationships, and your working style. Not just a database of facts, but a semantic understanding that grows smarter with every interaction.</p>
+
+            <p>The result? An assistant that truly knows you. One that remembers Marco prefers formal emails, that Sofia always responds faster on WhatsApp, that your Tuesday mornings are sacred.</p>
+        </div>
+    </section>
+
+    <!-- Section 2: Memory Architecture -->
+    <section class="section section-dark">
+        <div class="container">
+            <span class="label">Core Technology</span>
+            <h2>Semantic Memory System</h2>
+
+            <p>Traditional search finds exact matches. Zylch understands <strong>meaning</strong>.</p>
+
+            <div class="tech-diagram">
+                <div class="flow">
+                    <span class="node">Your Request</span>
+                    <span class="arrow">&rarr;</span>
+                    <span class="node">Semantic Embedding</span>
+                    <span class="arrow">&rarr;</span>
+                    <span class="node">HNSW Index</span>
+                    <span class="arrow">&rarr;</span>
+                    <span class="node">Top Matches</span>
+                    <span class="arrow">&rarr;</span>
+                    <span class="node">Action</span>
+                </div>
+            </div>
+
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <h3>Vector-Based Memory</h3>
+                    <p>Not keyword matching. Semantic understanding. "Draft email to Marco about invoice" finds similar patterns even if you've never written those exact words.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>HNSW Indexing</h3>
+                    <p>Hierarchical Navigable Small World graphs. O(log n) search complexity. Millisecond retrieval even with millions of patterns.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Small-World Navigation</h3>
+                    <p>Like a highway system: start with long-distance links, then refine locally. 117x faster than linear search.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Confidence Learning</h3>
+                    <p>Every pattern has a confidence score. Approved actions gain trust. Rejected ones lose weight. The system learns what works for you.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Personalization -->
+    <section class="section section-light">
+        <div class="container">
+            <h2>Memory That Evolves</h2>
+
+            <p>Your memory is yours alone. Complete isolation by design.</p>
+
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <h3>Namespace Isolation</h3>
+                    <p>Multi-tenant architecture. Your patterns, preferences, and history are completely separated from other users.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Two-Tier System</h3>
+                    <p>Personal memory for your style. Global knowledge for best practices. Your preferences always take priority.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Bayesian Updates</h3>
+                    <p>Approve a draft? Confidence increases. Reject it? Confidence drops. Every interaction makes the system smarter.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Temporal Awareness</h3>
+                    <p>Patterns unused for 90+ days gradually lose relevance. Your memory stays fresh and current.</p>
+                </div>
+            </div>
+
+            <div class="confidence-demo">
+                <div class="confidence-row">
+                    <span class="confidence-label">Initial</span>
+                    <div class="confidence-bar-container">
+                        <div class="confidence-bar" style="width: 50%"></div>
+                    </div>
+                    <span class="confidence-value">50%</span>
+                </div>
+                <div class="confidence-row">
+                    <span class="confidence-label">After 1 success</span>
+                    <div class="confidence-bar-container">
+                        <div class="confidence-bar" style="width: 57.5%"></div>
+                    </div>
+                    <span class="confidence-value">57.5%</span>
+                </div>
+                <div class="confidence-row">
+                    <span class="confidence-label">After 5 successes</span>
+                    <div class="confidence-bar-container">
+                        <div class="confidence-bar" style="width: 91.6%"></div>
+                    </div>
+                    <span class="confidence-value">91.6%</span>
+                </div>
+                <div class="confidence-row">
+                    <span class="confidence-label">After 1 rejection</span>
+                    <div class="confidence-bar-container">
+                        <div class="confidence-bar" style="width: 82.4%"></div>
+                    </div>
+                    <span class="confidence-value">82.4%</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: Multi-Agent Architecture -->
+    <section class="section section-dark">
+        <div class="container">
+            <span class="label label-soon">Coming Soon</span>
+            <h2>Specialized Agents, Shared Memory</h2>
+
+            <p>Not one AI doing everything. A team of specialists collaborating through shared memory.</p>
+
+            <div class="agent-grid">
+                <div class="agent-item">
+                    <div class="agent-icon">&#128270;</div>
+                    <div class="agent-info">
+                        <h4>Email Analyst</h4>
+                        <p>Understands urgency, sentiment, and relationships in every message</p>
+                    </div>
+                </div>
+                <div class="agent-item">
+                    <div class="agent-icon">&#9997;</div>
+                    <div class="agent-info">
+                        <h4>Draft Composer</h4>
+                        <p>Writes in your voice, matching tone to each relationship</p>
+                    </div>
+                </div>
+                <div class="agent-item">
+                    <div class="agent-icon">&#128197;</div>
+                    <div class="agent-info">
+                        <h4>Scheduler</h4>
+                        <p>Manages calendar, follow-ups, and commitments</p>
+                    </div>
+                </div>
+                <div class="agent-item">
+                    <div class="agent-icon">&#128269;</div>
+                    <div class="agent-info">
+                        <h4>Researcher</h4>
+                        <p>Enriches unknown contacts with relevant context</p>
+                    </div>
+                </div>
+                <div class="agent-item">
+                    <div class="agent-icon">&#128222;</div>
+                    <div class="agent-info">
+                        <h4>Phone Agent</h4>
+                        <p>Handles calls with context-aware scripts</p>
+                    </div>
+                </div>
+                <div class="agent-item">
+                    <div class="agent-icon">&#129302;</div>
+                    <div class="agent-info">
+                        <h4>Coordinator</h4>
+                        <p>Orchestrates agents and routes tasks to the right specialist</p>
+                    </div>
+                </div>
+            </div>
+
+            <p style="margin-top: 2rem;"><strong>Shared Memory Protocol:</strong> Agents don't talk to each other directly. They communicate through memory. What one agent learns, all agents can use.</p>
+        </div>
+    </section>
+
+    <!-- Section 5: Security By Design -->
+    <section class="section section-light">
+        <div class="container">
+            <h2>Trust Through Transparency</h2>
+
+            <p>Security isn't an afterthought. It's built into every layer of the architecture.</p>
+
+            <div class="permission-layers">
+                <div class="permission-layer read">
+                    <span class="permission-badge">Read</span>
+                    <p><strong>Analyzers</strong> can read your data to understand context, but cannot modify anything</p>
+                </div>
+                <div class="permission-layer write">
+                    <span class="permission-badge">Write</span>
+                    <p><strong>Composers</strong> can create drafts and suggestions, but cannot send without approval</p>
+                </div>
+                <div class="permission-layer action">
+                    <span class="permission-badge">Action</span>
+                    <p><strong>Executors</strong> can send emails and make calls, but only after human confirmation</p>
+                </div>
+            </div>
+
+            <div class="feature-grid" style="margin-top: 2rem;">
+                <div class="feature-item">
+                    <h3>Audit Trail</h3>
+                    <p>Every decision is logged. You can always ask "why did you do this?" and get a clear answer.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Human-in-the-Loop</h3>
+                    <p>Critical actions always require your approval. Zylch suggests, you decide.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Supervisor Agents</h3>
+                    <p>Dedicated agents monitor behavior, detect anomalies, and ensure quality.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Zero Data Leakage</h3>
+                    <p>Your memory is never used for training or shared with other users. Period.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 6: Intelligence Layer -->
+    <section class="section section-dark">
+        <div class="container">
+            <h2>Beyond Pattern Matching</h2>
+
+            <p>Advanced intelligence that goes deeper than surface-level analysis.</p>
+
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <h3>Email Authentication</h3>
+                    <p>Not just syntax analysis. We check SPF, DKIM, DMARC records to identify spoofed or suspicious emails.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>AI Content Detection</h3>
+                    <p>Identifies AI-generated emails through comprehensive analysis, not just stylistic patterns.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Relationship Graphs</h3>
+                    <p>Understands connections between people and companies. Who works where, who knows whom.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Sentiment Tracking</h3>
+                    <p>Monitors how relationships evolve over time. Catches cooling relationships before they go cold.</p>
+                </div>
+            </div>
+
+            <p style="margin-top: 2rem;"><strong>Gap Detection:</strong> Automatically identifies relationships that need attention. "You haven't heard from David in 3 weeks. Last time, he responded within a day."</p>
+        </div>
+    </section>
+
+    <!-- Section 7: Multi-Channel -->
+    <section class="section section-light">
+        <div class="container">
+            <span class="label">Expanding</span>
+            <h2>One Memory, Every Channel</h2>
+
+            <p>Your relationships don't live in just one place. Neither does Zylch.</p>
+
+            <div class="channel-grid">
+                <div class="channel-item">
+                    <div class="channel-icon">&#128231;</div>
+                    <span class="channel-label">Email</span>
+                </div>
+                <div class="channel-item">
+                    <div class="channel-icon">&#128222;</div>
+                    <span class="channel-label">Phone</span>
+                </div>
+                <div class="channel-item">
+                    <div class="channel-icon">&#128197;</div>
+                    <span class="channel-label">Calendar</span>
+                </div>
+                <div class="channel-item">
+                    <div class="channel-icon">&#128172;</div>
+                    <span class="channel-label">WhatsApp</span>
+                </div>
+                <div class="channel-item">
+                    <div class="channel-icon">&#128172;</div>
+                    <span class="channel-label">Slack</span>
+                </div>
+                <div class="channel-item">
+                    <div class="channel-icon">&#128172;</div>
+                    <span class="channel-label">SMS</span>
+                </div>
+            </div>
+
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <h3>Unified History</h3>
+                    <p>One view of every interaction. Email threads, calls, messages - all in context.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Channel-Specific Rules</h3>
+                    <p>Formal on email, casual on WhatsApp. Same contact, different rules per channel.</p>
+                </div>
+            </div>
+
+            <p style="margin-top: 2rem;"><strong>Cross-Channel Intelligence:</strong> "Sofia responded on WhatsApp after ignoring 3 emails. She prefers short messages."</p>
+        </div>
+    </section>
+
+    <!-- Section 8: Voice Intelligence -->
+    <section class="section section-dark">
+        <div class="container">
+            <span class="label">Phone</span>
+            <h2>AI That Speaks</h2>
+
+            <p>Not robotic scripts. Natural conversation with real understanding.</p>
+
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <h3>Natural Voice</h3>
+                    <p>Advanced text-to-speech that sounds human, not mechanical.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Real-Time Understanding</h3>
+                    <p>Speech-to-text with contextual comprehension. Understands intent, not just words.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Adaptive Conversations</h3>
+                    <p>Calls adapt to responses. No rigid scripts. Real dialogue.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Caller Recognition</h3>
+                    <p>Knows who's calling before answering. Adapts behavior based on relationship history.</p>
+                </div>
+            </div>
+
+            <p style="margin-top: 2rem;"><strong>Call Summary:</strong> Automatic transcription and key points after every call. Nothing gets lost.</p>
+        </div>
+    </section>
+
+    <!-- Section 9: Performance -->
+    <section class="section section-light">
+        <div class="container">
+            <h2>Speed That Scales</h2>
+
+            <p>Enterprise-grade performance, even as your data grows.</p>
+
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-value">&lt;2ms</div>
+                    <div class="stat-label">Pattern retrieval<br>10,000 patterns</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">117x</div>
+                    <div class="stat-label">Faster than<br>linear search</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">O(log n)</div>
+                    <div class="stat-label">Search complexity<br>scales gracefully</div>
+                </div>
+            </div>
+
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <h3>Local-First</h3>
+                    <p>Known patterns are retrieved locally. Instant responses for familiar requests.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Smart Caching</h3>
+                    <p>Embeddings and results are cached. No redundant computation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2>Technology in Service of You</h2>
+            <p>All this technology exists for one purpose: to make you more effective. Not to replace you. To amplify you.</p>
+            <a href="index.html" class="cta-button">Get Started</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <a href="index.html" class="logo" style="font-size: 1.2rem; display: block; margin-bottom: 0.5rem;">Zylch</a>
+    </footer>
 </body>
 </html>
