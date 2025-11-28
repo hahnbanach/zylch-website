@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Learn how Zylch AI builds a unified memory of all your relationships across every communication channel.">
+    <title>Learn More - Zylch AI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Variables */
+        :root {
+            --bg-primary: #ffffff;
+            --text-primary: #1a1a1a;
+            --text-muted: #888888;
+            --text-link: #666666;
+            --accent: #4a9eff;
+            --chat-bg: #1e1e2e;
+            --chat-header-bg: #16161e;
+            --chat-human-bg: #2d2d44;
+            --chat-zylch-border: #4a9eff;
+            --radius: 24px;
+            --radius-sm: 12px;
+            --shadow: 0 2px 8px rgba(0,0,0,0.08);
+            --shadow-lg: 0 8px 32px rgba(0,0,0,0.12);
+        }
+
+        /* Reset */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Base */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Navigation */
+        .nav {
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .logo:hover {
+            opacity: 0.8;
+        }
+
+        .back-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .back-link:hover {
+            color: var(--text-primary);
+        }
+
+        /* Container */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 4rem 0 5rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+        }
+
+        .hero .subline {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Section */
+        .section {
+            padding: 4rem 0;
+            border-top: 1px solid #f0f0f0;
+        }
+
+        .section h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.01em;
+        }
+
+        .section p {
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .section p:last-child {
+            margin-bottom: 0;
+        }
+
+        .section strong {
+            color: var(--text-primary);
+        }
+
+        /* Hub Diagram */
+        .hub-diagram {
+            background: var(--chat-bg);
+            border-radius: var(--radius-sm);
+            padding: 3rem 2rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .hub-center {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #4a9eff 0%, #6366f1 100%);
+            border-radius: 50%;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .hub-channels {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .channel {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--chat-human-bg);
+            padding: 0.6rem 1rem;
+            border-radius: 20px;
+            color: #e4e4e7;
+            font-size: 0.85rem;
+        }
+
+        .channel-icon {
+            font-size: 1rem;
+        }
+
+        /* Memory Animation */
+        .memory-visual {
+            background: var(--chat-bg);
+            border-radius: var(--radius-sm);
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .contact-card {
+            background: var(--chat-human-bg);
+            border-radius: var(--radius-sm);
+            padding: 1.5rem;
+            max-width: 350px;
+            margin: 0 auto;
+        }
+
+        .contact-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-avatar {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+        }
+
+        .contact-name {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .contact-title {
+            color: #888;
+            font-size: 0.85rem;
+        }
+
+        .contact-fields {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .contact-field {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: #e4e4e7;
+        }
+
+        .field-label {
+            color: #888;
+        }
+
+        .field-value {
+            color: var(--accent);
+        }
+
+        .field-updated {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        /* Task Cards */
+        .task-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .task-card {
+            background: var(--chat-bg);
+            border-radius: var(--radius-sm);
+            padding: 1.25rem 1.5rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .task-icon {
+            font-size: 1.25rem;
+            padding-top: 0.1rem;
+        }
+
+        .task-content {
+            flex: 1;
+        }
+
+        .task-title {
+            color: #fff;
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+
+        .task-meta {
+            color: #888;
+            font-size: 0.85rem;
+        }
+
+        .task-priority {
+            display: inline-block;
+            padding: 0.2rem 0.6rem;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            margin-left: auto;
+        }
+
+        .priority-high {
+            background: rgba(239, 68, 68, 0.2);
+            color: #f87171;
+        }
+
+        .priority-medium {
+            background: rgba(251, 191, 36, 0.2);
+            color: #fbbf24;
+        }
+
+        /* Action List */
+        .action-list {
+            margin: 1.5rem 0;
+            padding-left: 1.5rem;
+        }
+
+        .action-list li {
+            color: var(--text-muted);
+            margin: 0.5rem 0;
+        }
+
+        /* Email Preview */
+        .email-preview {
+            background: var(--chat-bg);
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+            margin: 2rem 0;
+            max-width: 450px;
+        }
+
+        .email-header {
+            background: var(--chat-header-bg);
+            padding: 0.75rem 1rem;
+            font-size: 0.8rem;
+            color: #888;
+        }
+
+        .email-field {
+            margin-bottom: 0.25rem;
+        }
+
+        .email-field span {
+            color: #666;
+        }
+
+        .email-body {
+            padding: 1.25rem;
+            color: #e4e4e7;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .email-signature {
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid #333;
+            color: #888;
+            font-size: 0.85rem;
+        }
+
+        .email-signature strong {
+            color: var(--accent);
+        }
+
+        /* Chat Demo */
+        .chat-demo {
+            background: var(--chat-bg);
+            border-radius: var(--radius-sm);
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .chat-exchange {
+            margin-bottom: 1.5rem;
+        }
+
+        .chat-exchange:last-child {
+            margin-bottom: 0;
+        }
+
+        .chat-you {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .chat-avatar {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.65rem;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .chat-avatar.you {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .chat-avatar.zylch {
+            background: linear-gradient(135deg, #4a9eff 0%, #6366f1 100%);
+            color: white;
+        }
+
+        .chat-bubble {
+            background: var(--chat-human-bg);
+            padding: 0.6rem 1rem;
+            border-radius: var(--radius-sm);
+            color: #e4e4e7;
+            font-size: 0.9rem;
+        }
+
+        .chat-response {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            padding-left: 0;
+        }
+
+        .chat-response-text {
+            color: #888;
+            font-size: 0.85rem;
+            font-style: italic;
+            border-left: 2px solid var(--accent);
+            padding-left: 0.75rem;
+        }
+
+        /* Channels Roadmap */
+        .channels-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.75rem;
+            margin: 2rem 0;
+        }
+
+        .channel-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1rem;
+            background: #f8f9fa;
+            border-radius: var(--radius-sm);
+            font-size: 0.9rem;
+        }
+
+        .channel-status {
+            font-size: 1rem;
+        }
+
+        .channel-item.coming-soon {
+            opacity: 0.6;
+        }
+
+        /* CTA Section */
+        .cta {
+            padding: 5rem 0;
+            text-align: center;
+            border-top: 1px solid #f0f0f0;
+        }
+
+        .cta h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--text-primary);
+            color: var(--bg-primary);
+            text-decoration: none;
+            border-radius: var(--radius);
+            font-weight: 500;
+            font-size: 1rem;
+            transition: background 0.2s ease;
+        }
+
+        .cta-button:hover {
+            background: #333;
+        }
+
+        .cta-subtext {
+            margin-top: 1rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 2rem;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero .subline {
+                font-size: 1rem;
+            }
+
+            .section {
+                padding: 3rem 0;
+            }
+
+            .section h2 {
+                font-size: 1.3rem;
+            }
+
+            .hub-diagram {
+                padding: 2rem 1rem;
+            }
+
+            .channels-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .task-card {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .task-priority {
+                margin-left: 0;
+                margin-top: 0.5rem;
+            }
+
+            .cta h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <a href="index.html" class="logo">Zylch</a>
+        <a href="index.html" class="back-link">&larr; Back</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero container">
+        <h1>Zylch knows everyone you know</h1>
+        <p class="subline">An AI that builds a living memory of every relationship, across every channel.</p>
+    </section>
+
+    <!-- Section 1: The Unified Picture -->
+    <section class="section container">
+        <h2>One person, every channel</h2>
+
+        <div class="hub-diagram">
+            <div class="hub-center">👤</div>
+            <div class="hub-channels">
+                <span class="channel"><span class="channel-icon">📧</span> Email</span>
+                <span class="channel"><span class="channel-icon">📅</span> Calendar</span>
+                <span class="channel"><span class="channel-icon">📞</span> Phone</span>
+                <span class="channel"><span class="channel-icon">💬</span> WhatsApp</span>
+                <span class="channel"><span class="channel-icon">💼</span> CRM</span>
+                <span class="channel"><span class="channel-icon">🔍</span> Web</span>
+            </div>
+        </div>
+
+        <p>Traditional tools show you conversations. Zylch shows you <strong>people</strong>.</p>
+        <p>For every contact, Zylch aggregates everything: emails exchanged, calls made, meetings held, messages sent, CRM notes, and more. When you ask "What's happening with Marco?", you get the complete picture—not scattered fragments across 5 apps.</p>
+    </section>
+
+    <!-- Section 2: Memory That Evolves -->
+    <section class="section container">
+        <h2>Memory that evolves</h2>
+
+        <div class="memory-visual">
+            <div class="contact-card">
+                <div class="contact-header">
+                    <div class="contact-avatar">DC</div>
+                    <div>
+                        <div class="contact-name">David Chen</div>
+                        <div class="contact-title">Partner at Meridian Legal</div>
+                    </div>
+                </div>
+                <div class="contact-fields">
+                    <div class="contact-field">
+                        <span class="field-label">Last contact</span>
+                        <span class="field-value field-updated">2 hours ago</span>
+                    </div>
+                    <div class="contact-field">
+                        <span class="field-label">Phone</span>
+                        <span class="field-value field-updated">+39 02 555 1234</span>
+                    </div>
+                    <div class="contact-field">
+                        <span class="field-label">Topics</span>
+                        <span class="field-value">Nextera deal, compliance</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <p>Zylch's memory works like yours. When David sends a new email, Zylch doesn't just file it—it <strong>updates</strong> everything it knows about him. New phone number? Updated. Changed company? Updated. Different communication style? Learned.</p>
+        <p>No stale data. No conflicting records. Just a living, breathing understanding of your relationships.</p>
+    </section>
+
+    <!-- Section 3: What You Need to Do -->
+    <section class="section container">
+        <h2>What you need to do</h2>
+
+        <div class="task-cards">
+            <div class="task-card">
+                <span class="task-icon">📧</span>
+                <div class="task-content">
+                    <div class="task-title">Reply to Priya Sharma</div>
+                    <div class="task-meta">Waiting 3 days for your response</div>
+                </div>
+                <span class="task-priority priority-high">High</span>
+            </div>
+
+            <div class="task-card">
+                <span class="task-icon">📞</span>
+                <div class="task-content">
+                    <div class="task-title">Call Sofia Garcia</div>
+                    <div class="task-meta">You promised to follow up Tuesday</div>
+                </div>
+                <span class="task-priority priority-medium">Medium</span>
+            </div>
+
+            <div class="task-card">
+                <span class="task-icon">📝</span>
+                <div class="task-content">
+                    <div class="task-title">Send meeting recap</div>
+                    <div class="task-meta">Atlas Ventures call (yesterday)</div>
+                </div>
+                <span class="task-priority priority-high">High</span>
+            </div>
+        </div>
+
+        <p>Every morning, Zylch tells you exactly what needs your attention. Not 50 emails to scan—just the <strong>actions</strong> that matter.</p>
+
+        <ul class="action-list">
+            <li>Emails awaiting your response</li>
+            <li>Follow-ups you promised</li>
+            <li>Contacts going silent</li>
+            <li>Meeting recaps to send</li>
+        </ul>
+
+        <p>One question answered: "What do I need to do today?"</p>
+    </section>
+
+    <!-- Section 4: Honest AI -->
+    <section class="section container">
+        <h2>Honest AI</h2>
+
+        <div class="email-preview">
+            <div class="email-header">
+                <div class="email-field"><span>To:</span> m.rossi@northstar-consulting.com</div>
+                <div class="email-field"><span>Subject:</span> Project Update</div>
+            </div>
+            <div class="email-body">
+                Hi Marco,
+                <br><br>
+                Here's the update from yesterday's call. The team confirmed the timeline for Q2, and we're on track for the review next week.
+                <br><br>
+                Let me know if you need anything else.
+
+                <div class="email-signature">
+                    Best,<br>
+                    <strong>Zylch AI</strong><br>
+                    (on behalf of James Wilson)
+                </div>
+            </div>
+        </div>
+
+        <p>Zylch doesn't pretend to be you. Every email, every call clearly identifies itself:</p>
+
+        <ul class="action-list">
+            <li><strong>Emails:</strong> "Written by Zylch AI for [You]"</li>
+            <li><strong>Phone calls:</strong> "Hi, I'm Zylch, calling on behalf of..."</li>
+        </ul>
+
+        <p>Your contacts know they're talking to your AI assistant. That's not a bug—it's a feature. Transparency builds trust.</p>
+    </section>
+
+    <!-- Section 5: Just Talk -->
+    <section class="section container">
+        <h2>Just talk</h2>
+
+        <div class="chat-demo">
+            <div class="chat-exchange">
+                <div class="chat-you">
+                    <span class="chat-avatar you">JW</span>
+                    <span class="chat-bubble">What's happening with Pinnacle?</span>
+                </div>
+                <div class="chat-response">
+                    <span class="chat-avatar zylch">Z</span>
+                    <span class="chat-response-text">Shows full relationship analysis, recent interactions, and pending items</span>
+                </div>
+            </div>
+
+            <div class="chat-exchange">
+                <div class="chat-you">
+                    <span class="chat-avatar you">JW</span>
+                    <span class="chat-bubble">Draft a follow-up for Priya</span>
+                </div>
+                <div class="chat-response">
+                    <span class="chat-avatar zylch">Z</span>
+                    <span class="chat-response-text">Generates contextual email based on your history</span>
+                </div>
+            </div>
+
+            <div class="chat-exchange">
+                <div class="chat-you">
+                    <span class="chat-avatar you">JW</span>
+                    <span class="chat-bubble">Call Sofia and ask about the proposal</span>
+                </div>
+                <div class="chat-response">
+                    <span class="chat-avatar zylch">Z</span>
+                    <span class="chat-response-text">Initiates call with full context of the proposal</span>
+                </div>
+            </div>
+        </div>
+
+        <p>No special commands. No learning curve. If you can write or speak, you can use Zylch.</p>
+        <p>Zylch already knows what you know—your emails, your calls, your calendar. So when you say "remind Sofia about the demo", Zylch knows exactly which Sofia, which demo, and how to reach her.</p>
+    </section>
+
+    <!-- Section 6: Channels -->
+    <section class="section container">
+        <h2>Channels</h2>
+
+        <div class="channels-grid">
+            <div class="channel-item">
+                <span class="channel-status">✅</span>
+                <span>Email (Gmail, Outlook)</span>
+            </div>
+            <div class="channel-item">
+                <span class="channel-status">✅</span>
+                <span>Calendar (Google, Outlook)</span>
+            </div>
+            <div class="channel-item">
+                <span class="channel-status">✅</span>
+                <span>Phone (MrCall)</span>
+            </div>
+            <div class="channel-item">
+                <span class="channel-status">✅</span>
+                <span>CRM (Pipedrive, HubSpot)</span>
+            </div>
+            <div class="channel-item coming-soon">
+                <span class="channel-status">🔜</span>
+                <span>WhatsApp Business</span>
+            </div>
+            <div class="channel-item coming-soon">
+                <span class="channel-status">🔜</span>
+                <span>Teams</span>
+            </div>
+            <div class="channel-item coming-soon">
+                <span class="channel-status">🔜</span>
+                <span>Slack</span>
+            </div>
+            <div class="channel-item coming-soon">
+                <span class="channel-status">🔜</span>
+                <span>LinkedIn</span>
+            </div>
+        </div>
+
+        <p>We're building the complete communication hub. Phone and email work today. WhatsApp, Teams, and more are coming—all feeding into the same unified intelligence.</p>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta container">
+        <h2>Ready to remember everything?</h2>
+        <a href="index.html" class="cta-button">Join the Waitlist</a>
+        <p class="cta-subtext">Early access for professionals who value their relationships.</p>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <a href="index.html" class="logo" style="font-size: 1.2rem; display: block; margin-bottom: 0.5rem;">Zylch</a>
+    </footer>
+</body>
+</html>

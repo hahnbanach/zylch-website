@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Zylch AI - Your AI assistant for business communication. Manage emails, enrich contacts, and automate follow-ups.">
+    <title>Zylch AI - Business Communication Assistant</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Variables */
+        :root {
+            --bg-primary: #ffffff;
+            --text-primary: #1a1a1a;
+            --text-muted: #888888;
+            --text-link: #666666;
+            --accent: #4a9eff;
+            --chat-bg: #1e1e2e;
+            --chat-header-bg: #16161e;
+            --chat-human-bg: #2d2d44;
+            --chat-zylch-border: #4a9eff;
+            --radius: 24px;
+            --radius-sm: 12px;
+            --shadow: 0 2px 8px rgba(0,0,0,0.08);
+            --shadow-lg: 0 8px 32px rgba(0,0,0,0.12);
+        }
+
+        /* Reset */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Base */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 60vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 4rem 2rem 2rem;
+        }
+
+        .logo {
+            font-size: 4rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
+        }
+
+        .tagline {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+        }
+
+        /* Waitlist Form */
+        .waitlist-form {
+            display: flex;
+            gap: 0;
+            max-width: 500px;
+            width: 100%;
+            background: var(--bg-primary);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow), 0 0 0 1px rgba(0,0,0,0.06);
+            overflow: hidden;
+            transition: box-shadow 0.2s ease;
+        }
+
+        .waitlist-form:focus-within {
+            box-shadow: var(--shadow-lg), 0 0 0 1px rgba(74, 158, 255, 0.3);
+        }
+
+        .waitlist-form input {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            border: none;
+            font-size: 1rem;
+            font-family: inherit;
+            outline: none;
+            background: transparent;
+        }
+
+        .waitlist-form input::placeholder {
+            color: var(--text-muted);
+        }
+
+        .waitlist-form button {
+            padding: 1rem 1.5rem;
+            background: var(--text-primary);
+            color: var(--bg-primary);
+            border: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            font-family: inherit;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        .waitlist-form button:hover {
+            background: #333;
+        }
+
+        .waitlist-form button:disabled {
+            background: #666;
+            cursor: not-allowed;
+        }
+
+        .form-message {
+            margin-top: 0.75rem;
+            font-size: 0.9rem;
+            min-height: 1.5rem;
+        }
+
+        .form-message.success {
+            color: #27ca3f;
+        }
+
+        .form-message.error {
+            color: #ff5f56;
+        }
+
+        .privacy-note {
+            margin-top: 0.5rem;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            max-width: 500px;
+            text-align: center;
+            line-height: 1.5;
+        }
+
+        /* Navigation Links */
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .nav-links a {
+            color: var(--text-link);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+
+        /* Demo Section */
+        .demo-section {
+            padding: 2rem 2rem 4rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .demo-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* Chat Widget */
+        .chat-container {
+            width: 100%;
+            max-width: 800px;
+            background: var(--chat-bg);
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .chat-header {
+            background: var(--chat-header-bg);
+            padding: 0.75rem 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .chat-header-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ff5f56;
+        }
+
+        .chat-header-dot:nth-child(2) { background: #ffbd2e; }
+        .chat-header-dot:nth-child(3) { background: #27ca3f; }
+
+        .chat-header-title {
+            margin-left: auto;
+            margin-right: auto;
+            color: #888;
+            font-size: 0.85rem;
+        }
+
+        .chat-messages {
+            height: 500px;
+            overflow-y: auto;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        /* Message Styles */
+        .message {
+            display: flex;
+            gap: 0.75rem;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .message.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .message.human {
+            flex-direction: row;
+        }
+
+        .message.zylch {
+            flex-direction: row;
+        }
+
+        .avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .message.zylch .avatar {
+            background: linear-gradient(135deg, #4a9eff 0%, #6366f1 100%);
+        }
+
+        .message-content {
+            max-width: 85%;
+            color: #e4e4e7;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .message.human .message-content {
+            background: var(--chat-human-bg);
+            padding: 0.75rem 1rem;
+            border-radius: var(--radius-sm);
+        }
+
+        .message.zylch .message-content {
+            padding: 0.5rem 0;
+            border-left: 2px solid var(--chat-zylch-border);
+            padding-left: 1rem;
+        }
+
+        /* Markdown Styling in Chat */
+        .message-content h3 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin: 1rem 0 0.5rem;
+            color: #fff;
+        }
+
+        .message-content h3:first-child {
+            margin-top: 0;
+        }
+
+        .message-content strong {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .message-content ul {
+            margin: 0.5rem 0;
+            padding-left: 1.25rem;
+        }
+
+        .message-content li {
+            margin: 0.25rem 0;
+        }
+
+        .message-content p {
+            margin: 0.5rem 0;
+        }
+
+        .message-content p:first-child {
+            margin-top: 0;
+        }
+
+        /* Typing cursor */
+        .typing-cursor {
+            display: inline-block;
+            width: 2px;
+            height: 1em;
+            background: #fff;
+            margin-left: 2px;
+            animation: blink 0.8s infinite;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .logo {
+                font-size: 3rem;
+            }
+
+            .tagline {
+                font-size: 1rem;
+                text-align: center;
+            }
+
+            .waitlist-form {
+                flex-direction: column;
+                border-radius: var(--radius-sm);
+            }
+
+            .waitlist-form button {
+                border-radius: 0;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .chat-messages {
+                height: 400px;
+                padding: 1rem;
+            }
+
+            .message-content {
+                max-width: 90%;
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1 class="logo">Zylch</h1>
+        <p class="tagline">Your AI assistant for business communication</p>
+
+        <form class="waitlist-form" id="signup-form">
+            <input type="email" id="email-input" placeholder="your.name@company.com" required>
+            <button type="submit" id="submit-btn">Get Started</button>
+        </form>
+        <p class="form-message" id="form-message"></p>
+        <p class="privacy-note">By submitting, you agree to receive an email from Zylch AI. Your data is used solely to evaluate our service and will not be shared with third parties or used for marketing.</p>
+
+        <nav class="nav-links">
+            <a href="learn.html">I want to know more</a>
+            <a href="mission.html">Mission</a>
+            <a href="technology.html">Technology</a>
+        </nav>
+    </section>
+
+    <!-- Demo Section -->
+    <section class="demo-section">
+        <span class="demo-label">Live Demo</span>
+        <div class="chat-container">
+            <div class="chat-header">
+                <span class="chat-header-dot"></span>
+                <span class="chat-header-dot"></span>
+                <span class="chat-header-dot"></span>
+                <span class="chat-header-title">Zylch AI</span>
+            </div>
+            <div class="chat-messages" id="chat"></div>
+        </div>
+    </section>
+
+    <script>
+        // Conversation data loaded from JSON file
+        let conversation = [];
+
+        // Simple markdown parser for chat messages
+        function parseMarkdown(text) {
+            let html = text;
+
+            // Headers (### )
+            html = html.replace(/^### (.+)$/gm, '<h3>$1</h3>');
+
+            // Bold (**text**)
+            html = html.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+
+            // Line breaks to paragraphs
+            const paragraphs = html.split('\n\n');
+            html = paragraphs.map(p => {
+                // Check if it's a list
+                if (p.trim().startsWith('- ')) {
+                    const items = p.split('\n').filter(l => l.trim().startsWith('- '));
+                    const listItems = items.map(item => `<li>${item.replace(/^- /, '')}</li>`).join('');
+                    return `<ul>${listItems}</ul>`;
+                }
+                // Check if it's a numbered list
+                if (/^\d+\.\s/.test(p.trim())) {
+                    const items = p.split('\n').filter(l => /^\d+\.\s/.test(l.trim()));
+                    const listItems = items.map(item => `<li>${item.replace(/^\d+\.\s/, '')}</li>`).join('');
+                    return `<ul>${listItems}</ul>`;
+                }
+                // Check if it's already a header
+                if (p.includes('<h3>')) {
+                    return p;
+                }
+                return `<p>${p.replace(/\n/g, '<br>')}</p>`;
+            }).join('');
+
+            return html;
+        }
+
+        // Create message element
+        function createMessage(msg) {
+            const div = document.createElement('div');
+            div.className = `message ${msg.role}`;
+
+            const avatar = document.createElement('div');
+            avatar.className = 'avatar';
+            avatar.textContent = msg.role === 'human' ? 'MA' : 'Z';
+
+            const content = document.createElement('div');
+            content.className = 'message-content';
+
+            div.appendChild(avatar);
+            div.appendChild(content);
+
+            return { container: div, content };
+        }
+
+        // Typewriter effect
+        function typewriter(element, text, speed = 40) {
+            return new Promise(resolve => {
+                let i = 0;
+                const cursor = document.createElement('span');
+                cursor.className = 'typing-cursor';
+                element.appendChild(cursor);
+
+                function type() {
+                    if (i < text.length) {
+                        element.insertBefore(document.createTextNode(text.charAt(i)), cursor);
+                        i++;
+                        setTimeout(type, speed);
+                    } else {
+                        cursor.remove();
+                        resolve();
+                    }
+                }
+                type();
+            });
+        }
+
+        // Fade in effect
+        function fadeIn(element) {
+            return new Promise(resolve => {
+                element.classList.add('visible');
+                setTimeout(resolve, 300);
+            });
+        }
+
+        // Sleep utility
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+        // Auto-scroll chat
+        function scrollToBottom() {
+            const chat = document.getElementById('chat');
+            chat.scrollTop = chat.scrollHeight;
+        }
+
+        // Main conversation player
+        async function playConversation() {
+            const chat = document.getElementById('chat');
+
+            for (const msg of conversation) {
+                const { container, content } = createMessage(msg);
+                chat.appendChild(container);
+
+                if (msg.role === 'human') {
+                    // Show container first
+                    await fadeIn(container);
+                    scrollToBottom();
+
+                    // Typewriter effect for human messages
+                    await typewriter(content, msg.text, 35);
+                    scrollToBottom();
+
+                    // Pause after human message
+                    await sleep(800);
+                } else {
+                    // Fade in Zylch messages as a block
+                    content.innerHTML = parseMarkdown(msg.text);
+                    await fadeIn(container);
+                    scrollToBottom();
+
+                    // Longer pause for reading
+                    await sleep(2500);
+                }
+            }
+
+            // Pause before restart
+            await sleep(3000);
+
+            // Clear and restart
+            chat.innerHTML = '';
+            playConversation();
+        }
+
+        // Blocked email domains (personal email providers)
+        const BLOCKED_DOMAINS = [
+            'gmail.com', 'googlemail.com',
+            'hotmail.com', 'hotmail.it', 'outlook.com', 'live.com',
+            'yahoo.com', 'yahoo.it', 'yahoo.co.uk',
+            'icloud.com', 'me.com', 'mac.com',
+            'libero.it', 'virgilio.it', 'alice.it',
+            'protonmail.com', 'proton.me',
+            'mail.com', 'email.com',
+            'aol.com', 'ymail.com',
+            'gmx.com', 'gmx.de',
+            'fastmail.com', 'fastmail.fm',
+            'tutanota.com', 'tutamail.com',
+            'zoho.com', 'zohomail.com'
+        ];
+
+        function showMessage(text, type) {
+            const msg = document.getElementById('form-message');
+            msg.textContent = text;
+            msg.className = 'form-message ' + type;
+        }
+
+        function clearMessage() {
+            const msg = document.getElementById('form-message');
+            msg.textContent = '';
+            msg.className = 'form-message';
+        }
+
+        // Signup form handler
+        document.getElementById('signup-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('email-input').value.trim();
+            const domain = email.split('@')[1]?.toLowerCase();
+            const btn = document.getElementById('submit-btn');
+
+            clearMessage();
+
+            // Client-side validation
+            if (BLOCKED_DOMAINS.includes(domain)) {
+                showMessage('Please use your business email address', 'error');
+                return;
+            }
+
+            // Submit to API
+            btn.textContent = 'Sending...';
+            btn.disabled = true;
+
+            try {
+                const res = await fetch('/api/signup', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email })
+                });
+
+                const data = await res.json();
+
+                if (res.ok) {
+                    showMessage('Check your inbox! Zylch just sent you an email.', 'success');
+                    document.getElementById('email-input').value = '';
+                } else if (data.error === 'business_email_required') {
+                    showMessage('Please use your business email address', 'error');
+                } else {
+                    showMessage(data.message || 'Something went wrong. Please try again.', 'error');
+                }
+            } catch (err) {
+                showMessage('Network error. Please try again.', 'error');
+            } finally {
+                btn.textContent = 'Get Started';
+                btn.disabled = false;
+            }
+        });
+
+        // Load conversation from JSON and start demo
+        async function init() {
+            try {
+                const response = await fetch('CONVERSATION_SAMPLE.json');
+                conversation = await response.json();
+                playConversation();
+            } catch (error) {
+                console.error('Failed to load conversation:', error);
+                // Fallback: show error message in chat
+                const chat = document.getElementById('chat');
+                chat.innerHTML = '<p style="color: #888; text-align: center; padding: 2rem;">Loading demo conversation...</p>';
+            }
+        }
+
+        // Start the demo when page loads
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>
