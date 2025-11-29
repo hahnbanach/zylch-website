@@ -176,6 +176,44 @@
             margin-bottom: 1rem;
             text-transform: uppercase;
             letter-spacing: 0.1em;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+
+        .demo-label:hover {
+            color: var(--text-primary);
+        }
+
+        /* Demo Tabs */
+        .demo-tabs {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            max-width: 800px;
+        }
+
+        .demo-tab {
+            padding: 0.5rem 1rem;
+            background: #f0f0f0;
+            border: none;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-family: inherit;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .demo-tab:hover {
+            background: #e0e0e0;
+            color: var(--text-primary);
+        }
+
+        .demo-tab.active {
+            background: var(--text-primary);
+            color: var(--bg-primary);
         }
 
         /* Chat Widget */
@@ -390,8 +428,18 @@
 
     <!-- Demo Section -->
     <section class="demo-section">
-        <span class="demo-label">Live Demo</span>
-        <div class="chat-container">
+        <span class="demo-label" id="demo-label">Live Demo - Click to Pause</span>
+
+        <div class="demo-tabs" id="demo-tabs">
+            <button class="demo-tab active" data-demo="daily-briefing">Daily Briefing</button>
+            <button class="demo-tab" data-demo="calendar-integration">Calendar & Meetings</button>
+            <button class="demo-tab" data-demo="email-management">Email Management</button>
+            <button class="demo-tab" data-demo="contact-intelligence">Contact Intelligence</button>
+            <button class="demo-tab" data-demo="mrcall-integration">Phone Calls</button>
+            <button class="demo-tab" data-demo="sharing">Team Sharing</button>
+        </div>
+
+        <div class="chat-container" id="chat-container">
             <div class="chat-header">
                 <span class="chat-header-dot"></span>
                 <span class="chat-header-dot"></span>
@@ -405,6 +453,9 @@
     <script>
         // Conversation data loaded from JSON file
         let conversation = [];
+        let isPaused = false;
+        let currentDemo = 'daily-briefing';
+        let playbackAborted = false;
 
         // Simple markdown parser for chat messages
         function parseMarkdown(text) {
@@ -489,9 +540,22 @@
             });
         }
 
-        // Sleep utility
+        // Sleep utility with pause support
         function sleep(ms) {
-            return new Promise(resolve => setTimeout(resolve, ms));
+            return new Promise(resolve => {
+                const checkPause = () => {
+                    if (playbackAborted) {
+                        resolve();
+                        return;
+                    }
+                    if (isPaused) {
+                        setTimeout(checkPause, 100);
+                    } else {
+                        setTimeout(resolve, ms);
+                    }
+                };
+                checkPause();
+            });
         }
 
         // Auto-scroll chat
@@ -503,8 +567,11 @@
         // Main conversation player
         async function playConversation() {
             const chat = document.getElementById('chat');
+            playbackAborted = false;
 
             for (const msg of conversation) {
+                if (playbackAborted) return;
+
                 const { container, content } = createMessage(msg);
                 chat.appendChild(container);
 
@@ -528,14 +595,57 @@
                     // Longer pause for reading
                     await sleep(2500);
                 }
+
+                if (playbackAborted) return;
             }
 
             // Pause before restart
             await sleep(3000);
 
+            if (playbackAborted) return;
+
             // Clear and restart
             chat.innerHTML = '';
             playConversation();
+        }
+
+        // Toggle pause/resume
+        function togglePause() {
+            isPaused = !isPaused;
+            const label = document.getElementById('demo-label');
+            if (isPaused) {
+                label.textContent = 'Paused - Click to Resume';
+            } else {
+                label.textContent = 'Live Demo - Click to Pause';
+            }
+        }
+
+        // Load and switch demo
+        async function loadDemo(demoName) {
+            playbackAborted = true;
+            currentDemo = demoName;
+
+            // Update active tab
+            document.querySelectorAll('.demo-tab').forEach(tab => {
+                tab.classList.toggle('active', tab.dataset.demo === demoName);
+            });
+
+            // Clear chat
+            const chat = document.getElementById('chat');
+            chat.innerHTML = '';
+
+            // Load new conversation
+            try {
+                const response = await fetch(`demos/${demoName}.json`);
+                conversation = await response.json();
+                playbackAborted = false;
+                isPaused = false;
+                document.getElementById('demo-label').textContent = 'Live Demo - Click to Pause';
+                playConversation();
+            } catch (error) {
+                console.error('Failed to load demo:', error);
+                chat.innerHTML = '<p style="color: #888; text-align: center; padding: 2rem;">Failed to load demo...</p>';
+            }
         }
 
         // Blocked email domains (personal email providers)
@@ -612,16 +722,17 @@
 
         // Load conversation from JSON and start demo
         async function init() {
-            try {
-                const response = await fetch('CONVERSATION_SAMPLE.json');
-                conversation = await response.json();
-                playConversation();
-            } catch (error) {
-                console.error('Failed to load conversation:', error);
-                // Fallback: show error message in chat
-                const chat = document.getElementById('chat');
-                chat.innerHTML = '<p style="color: #888; text-align: center; padding: 2rem;">Loading demo conversation...</p>';
-            }
+            // Set up event listeners
+            document.getElementById('demo-label').addEventListener('click', togglePause);
+            document.getElementById('chat-container').addEventListener('click', togglePause);
+
+            // Set up tab clicks
+            document.querySelectorAll('.demo-tab').forEach(tab => {
+                tab.addEventListener('click', () => loadDemo(tab.dataset.demo));
+            });
+
+            // Load default demo
+            loadDemo('daily-briefing');
         }
 
         // Start the demo when page loads

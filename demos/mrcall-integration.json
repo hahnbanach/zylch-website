@@ -1,0 +1,34 @@
+[
+    {
+        "role": "human",
+        "text": "/mrcall"
+    },
+    {
+        "role": "zylch",
+        "text": "📞 YOUR MRCALL ASSISTANTS\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n✓ ACTIVE: Miller Consulting\n  📱 +1-415-555-0100\n  📊 This month: 147 calls handled\n  ⏰ Hours: 24/7\n\n  INACTIVE:\n  • Personal Line (+1-415-555-0101)\n  • Support Hotline (+1-800-555-0123)\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\nUse /mrcall --id <name> to switch assistants\nUse /mrcall --list for full details"
+    },
+    {
+        "role": "human",
+        "text": "Any calls today?"
+    },
+    {
+        "role": "zylch",
+        "text": "📞 TODAY'S CALLS (Miller Consulting)\n\nTotal: 8 calls | 6 handled by AI | 2 transferred\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n🤖 AI HANDLED (6)\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n1. 9:15 AM - Unknown (+1-650-555-0199)\n   Duration: 2:34\n   Intent: Pricing inquiry\n   Action: Sent pricing PDF, captured email\n   📧 Collected: robert.harris@outlook.com\n\n2. 10:02 AM - Maria Santos (BrightWave)\n   Duration: 1:12\n   Intent: Checking meeting time\n   Action: Confirmed Thursday 2 PM, sent calendar link\n\n3. 11:30 AM - Unknown (+1-212-555-0147)\n   Duration: 3:45\n   Intent: Demo request\n   Action: Scheduled demo for Friday 3 PM\n   📧 Collected: jennifer.lee@startupxyz.com\n\n4. 1:15 PM - Spam/Robocall\n   Duration: 0:08\n   Action: Detected and terminated\n\n5. 2:30 PM - Lisa Henderson (Henderson Corp)\n   Duration: 1:55\n   Intent: Confirming she received the email\n   Action: Confirmed, mentioned you're preparing proposal\n\n6. 4:45 PM - Carlos Rivera (Lead)\n   Duration: 2:20\n   Intent: Following up on website inquiry\n   Action: Captured requirements, promised callback\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n📲 TRANSFERRED TO YOU (2)\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n1. 3:00 PM - David Chen\n   Reason: VIP contact, asked to speak directly\n   Duration: 12:30 (your call)\n\n2. 3:45 PM - Robert Kim (TechStart)\n   Reason: Urgent - production issue\n   Duration: 8:15 (your call)\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n📊 INSIGHTS\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n• 2 new leads captured (Robert Harris, Jennifer Lee)\n• 1 spam call blocked\n• Lisa Henderson called - she's engaged with the deal!\n• Carlos Rivera following up - hot lead"
+    },
+    {
+        "role": "human",
+        "text": "Tell me more about the Jennifer Lee call"
+    },
+    {
+        "role": "zylch",
+        "text": "📞 CALL DETAILS: Jennifer Lee\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\nTime: 11:30 AM (3 hours ago)\nDuration: 3 minutes 45 seconds\nPhone: +1-212-555-0147\nEmail: jennifer.lee@startupxyz.com (captured)\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n🎯 CALL SUMMARY\n\nJennifer is the Head of Operations at StartupXYZ, a Series A fintech company in NYC. She found you through a LinkedIn post about AI phone assistants.\n\nKEY POINTS FROM CALL:\n• They handle ~200 inbound calls/day\n• Current pain: 3 full-time staff just answering phones\n• Use case: Customer support + appointment scheduling\n• Timeline: Want to implement before January\n• Budget: \"Flexible for the right solution\"\n\nQUESTIONS SHE ASKED:\n1. \"Can it integrate with our CRM (HubSpot)?\"\n   → AI confirmed yes, full HubSpot integration\n\n2. \"What about after-hours calls?\"\n   → AI explained 24/7 availability\n\n3. \"Can we customize the voice and script?\"\n   → AI explained customization options\n\nNEXT STEP:\n📅 Demo scheduled: Friday, Dec 6 at 3:00 PM\nShe requested you show the HubSpot integration specifically.\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n💡 This looks like a strong lead - fintech with real budget and clear pain point.\n\nWant me to:\n1. Add Jennifer to your contacts with this context?\n2. Create a prep task for the Friday demo?\n3. Look up StartupXYZ for more background?"
+    },
+    {
+        "role": "human",
+        "text": "Yes to all three"
+    },
+    {
+        "role": "zylch",
+        "text": "Done! Here's what I set up:\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n✓ CONTACT ADDED\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n👤 Jennifer Lee\nEmail: jennifer.lee@startupxyz.com\nPhone: +1-212-555-0147\nCompany: StartupXYZ (Fintech, Series A)\nRole: Head of Operations\nSource: Inbound call via MrCall\nNotes: 200 calls/day, wants HubSpot integration, January timeline\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n✓ TASK CREATED\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n📋 Prep StartupXYZ Demo\nDue: Friday Dec 6, 2:00 PM (1 hour before demo)\n\nChecklist:\n☐ Prepare HubSpot integration walkthrough\n☐ Set up demo environment with sample fintech data\n☐ Review call recording for specific pain points\n☐ Prepare pricing for 200 calls/day volume\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n✓ COMPANY RESEARCH\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n🏢 StartupXYZ\nIndustry: Fintech - Personal Finance\nFounded: 2022\nFunding: $8M Series A (March 2024)\nTeam: ~45 employees\nHQ: New York, NY\n\nLeadership:\n• CEO: Marcus Thompson\n• CTO: Diana Wong\n• Head of Ops: Jennifer Lee ← Your contact\n\nRecent News:\n• Oct 2024: Launched new mobile app\n• Nov 2024: Hiring for customer success (growth mode)\n\n💡 INSIGHT: They're scaling fast and hiring for customer success - perfect timing for AI phone solution to reduce headcount needs.\n\nThis is a qualified lead. Good catch by MrCall! 🎯"
+    }
+]

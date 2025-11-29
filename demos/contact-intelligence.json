@@ -1,0 +1,46 @@
+[
+    {
+        "role": "human",
+        "text": "What do you know about Maria Santos?"
+    },
+    {
+        "role": "zylch",
+        "text": "Here's everything I know about Maria Santos:\n\nCONTACT PROFILE\nFull Name: Maria Santos\nEmail: maria.santos@brightwave.io\nPhone: +1-650-555-0847\nCompany: BrightWave Technologies\nRole: VP of Product\n\nRELATIONSHIP OVERVIEW\nType: Active Client - Enterprise Account\nFirst Contact: March 2024\nLast Interaction: 2 days ago (email about Q1 roadmap)\n\nCOMMUNICATION HISTORY\n📧 47 emails exchanged (you sent 22, received 25)\n📅 8 meetings in the last 6 months\n📞 3 phone calls logged via MrCall\n\nKEY CONTEXT\n- She's your main point of contact for the BrightWave deal\n- Reports directly to their CEO (James Liu)\n- Prefers concise emails, always responds within 24 hours\n- You promised to send updated pricing by Friday\n- She mentioned budget approval coming next week\n\nRECENT ACTIVITY\n• Nov 27: Email about Q1 integration timeline (needs reply)\n• Nov 22: 30-min call discussing API requirements\n• Nov 18: Meeting with her team about pilot results\n\nPENDING ITEMS\n⚠️ You owe her: Updated pricing document\n⏳ She owes you: Budget confirmation"
+    },
+    {
+        "role": "human",
+        "text": "Who else do I know at BrightWave?"
+    },
+    {
+        "role": "zylch",
+        "text": "Here are all your contacts at BrightWave Technologies:\n\n1. MARIA SANTOS (VP of Product) ⭐ Primary Contact\n   maria.santos@brightwave.io\n   Last contact: 2 days ago\n   47 emails, 8 meetings\n\n2. JAMES LIU (CEO)\n   james.liu@brightwave.io\n   Last contact: 3 weeks ago\n   Met at the September conference, exchanged 5 emails\n   Maria introduced you after the pilot success\n\n3. KEVIN PARK (Engineering Lead)\n   kevin.park@brightwave.io\n   Last contact: 1 week ago\n   Technical POC for integration, 12 emails about API specs\n   Very detail-oriented, always asks follow-up questions\n\n4. RACHEL THOMPSON (Procurement)\n   rachel.thompson@brightwave.io\n   Last contact: 2 weeks ago\n   Handles contracts and POs\n   Sent you the vendor registration forms\n\nORG INSIGHT\nMaria → reports to James\nKevin → works with Maria on product\nRachel → handles the commercial side\n\nYour strongest relationship is with Maria. James is the decision-maker but trusts Maria's recommendations."
+    },
+    {
+        "role": "human",
+        "text": "When did I last talk to anyone from Nexus Capital?"
+    },
+    {
+        "role": "zylch",
+        "text": "⚠️ RELATIONSHIP GAP DETECTED\n\nYour last contact with Nexus Capital was 34 days ago.\n\nNEXUS CAPITAL CONTACTS:\n\n1. AMANDA FOSTER (Partner)\n   amanda.foster@nexuscap.com\n   Last contact: October 26, 2025\n   She sent a follow-up after your pitch, you replied same day\n   No communication since then\n\n2. RYAN MITCHELL (Associate)\n   ryan.mitchell@nexuscap.com\n   Last contact: October 24, 2025\n   Attended your pitch meeting, asked about unit economics\n   CC'd on Amanda's follow-up\n\nLAST INTERACTION SUMMARY\nOct 26: Amanda wrote \"Thanks for the presentation. We'll discuss internally and circle back.\"\nYou replied: \"Looking forward to it. Happy to answer any follow-up questions.\"\n\n💡 SUGGESTION\nIt's been over a month with no response. This could mean:\n- They're still evaluating (normal for VC)\n- They passed but didn't communicate it\n- Your email got buried\n\nWant me to draft a gentle follow-up to Amanda?"
+    },
+    {
+        "role": "human",
+        "text": "yes please"
+    },
+    {
+        "role": "zylch",
+        "text": "Here's a draft follow-up:\n\nTo: amanda.foster@nexuscap.com\nSubject: Re: Following up - MrCall AI\n\nHi Amanda,\n\nHope you had a great November! I wanted to check in and see if you've had a chance to discuss MrCall internally.\n\nSince we last spoke, we've had some exciting developments:\n- Closed our pilot with BrightWave Technologies (enterprise SaaS)\n- Launched city government vertical (City of Millbrook live)\n- Monthly recurring revenue up 40%\n\nI'd love to share an updated deck if you're still evaluating, or happy to answer any questions from the team.\n\nNo pressure either way - just wanted to follow up and stay on your radar.\n\nBest,\nJohn"
+    },
+    {
+        "role": "zylch",
+        "text": "Would you like me to save this as a draft, or would you prefer to modify it first?"
+    },
+    {
+        "role": "human",
+        "text": "save it"
+    },
+    {
+        "role": "zylch",
+        "text": "DRAFT SAVED TO GMAIL ✓\n\nThe follow-up to Amanda Foster is now in your Drafts folder.\n\n💡 TIP: I've added Nexus Capital to your weekly follow-up list. I'll remind you if there's no response within 7 days."
+    }
+]

@@ -1,0 +1,34 @@
+[
+    {
+        "role": "human",
+        "text": "What do I need to do this week?"
+    },
+    {
+        "role": "zylch",
+        "text": "Here are your tasks for this week (Dec 2-6):\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n🔴 OVERDUE\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n1. Send case studies to Jennifer Walsh\n   Due: Nov 25 (7 days overdue)\n   Source: Meeting on Nov 22\n   \"I'll send you those case studies by Monday\"\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n📅 DUE TODAY (Monday)\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n2. Send updated pricing to Maria Santos (BrightWave)\n   Source: Email promise on Nov 24\n   \"I'll have the updated pricing to you by Monday\"\n\n3. Prepare demo environment for Coastal Logistics\n   Source: Demo scheduled for 2 PM today\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n📅 DUE THIS WEEK\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n4. Review contract redlines from Rachel\n   Due: Tuesday\n   Source: Email from Rachel on Nov 29\n\n5. Follow up with Alex Turner (CloudNine)\n   Due: Wednesday\n   Source: Meeting follow-up gap detected\n\n6. Send proposal revision to Henderson Corp\n   Due: Thursday (before 2 PM meeting)\n   Source: Lisa's questions about timeline\n\n7. Respond to Carlos Rivera (new lead)\n   Due: Friday\n   Source: Website inquiry received Nov 29\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n⏳ WAITING ON OTHERS\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n• Marcus Webb: Budget approval (Henderson)\n• Amanda Foster: Call scheduling (Nexus Capital)\n• Kevin Park: API requirements doc (BrightWave)"
+    },
+    {
+        "role": "human",
+        "text": "I sent the pricing to Maria this morning"
+    },
+    {
+        "role": "zylch",
+        "text": "✓ TASK COMPLETED\n\n\"Send updated pricing to Maria Santos\" marked as done.\n\nI found your email from 8:47 AM:\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\nTo: maria.santos@brightwave.io\nSubject: Updated Pricing - BrightWave Enterprise\n\"Hi Maria, as promised, here's the updated pricing breakdown...\"\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n📊 Task stats for today:\n• Completed: 1\n• Remaining: 2 (demo prep, Jennifer case studies)\n\nYou're making progress! 💪"
+    },
+    {
+        "role": "human",
+        "text": "What did I promise to the Henderson people?"
+    },
+    {
+        "role": "zylch",
+        "text": "Here's everything you committed to Henderson Corp:\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n📋 YOUR COMMITMENTS TO HENDERSON CORP\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n1. TO LISA HENDERSON (Nov 27 email):\n   ✓ \"We can compress to 4 weeks\" - Confirmed in your reply\n   ✓ \"24/7 support coverage\" - Confirmed in your reply\n   ⏳ \"I'll work with our delivery team to prioritize\" - Pending\n\n2. TO MARCUS WEBB (implied from CC):\n   ⏳ \"Happy to provide any additional documentation\"\n   Status: No follow-up yet, he hasn't replied\n\n3. FROM MEETING NOTES (Nov 18):\n   ⏳ \"Send revised proposal with accelerated timeline\"\n   Due: Before Thursday 2 PM meeting\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n📋 WHAT THEY COMMITTED TO YOU\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n1. Lisa: \"I'll have our CFO Marcus join\" ✓ Done\n2. Lisa: \"We'll have IT available for integration sessions\"\n3. Marcus: Budget approval decision (pending)\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n⚠️ ACTION NEEDED\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\nBefore Thursday's meeting, you should:\n1. Confirm with delivery team about 4-week timeline\n2. Prepare revised proposal document\n3. Have documentation ready for Marcus if he asks\n\nWant me to create calendar reminders for these?"
+    },
+    {
+        "role": "human",
+        "text": "Create a reminder to prep the Henderson proposal Wednesday afternoon"
+    },
+    {
+        "role": "zylch",
+        "text": "REMINDER CREATED ✓\n\n📅 Henderson Proposal Prep\n📆 Wednesday, December 4, 2025\n⏰ 2:00 PM - 3:00 PM\n\nDescription:\nPrepare revised proposal for Henderson Corp meeting (Thursday 2 PM)\n\nChecklist:\n☐ Confirm 4-week timeline with delivery team\n☐ Update proposal document with accelerated schedule\n☐ Prepare documentation for Marcus (budget approval)\n☐ Review Lisa's questions one more time\n\n💡 This gives you the afternoon to prep, and Thursday morning as buffer if needed.\n\nYour Henderson timeline:\n• Wed 2 PM: Proposal prep ← NEW\n• Thu 2 PM: Meeting with Lisa & Marcus\n• Thu 3:30 PM: Debrief with Sarah"
+    }
+]

@@ -1,0 +1,46 @@
+[
+    {
+        "role": "human",
+        "text": "Write a quick email to Elena about the contract"
+    },
+    {
+        "role": "zylch",
+        "text": "Here's a draft for Elena Rodriguez:\n\nTo: elena.rodriguez@ventureworks.com\nSubject: Contract Status Check-in\n\nHi Elena,\n\nQuick check-in on the contract - any updates from legal?\n\nHappy to jump on a call if there are questions.\n\nBest,\nJohn"
+    },
+    {
+        "role": "zylch",
+        "text": "I kept it short since you prefer concise emails. Should I save this as a draft?"
+    },
+    {
+        "role": "human",
+        "text": "Wait, I always write \"Cheers\" not \"Best\" when emailing Elena"
+    },
+    {
+        "role": "zylch",
+        "text": "Got it! I've updated the draft:\n\nTo: elena.rodriguez@ventureworks.com\nSubject: Contract Status Check-in\n\nHi Elena,\n\nQuick check-in on the contract - any updates from legal?\n\nHappy to jump on a call if there are questions.\n\nCheers,\nJohn\n\n✨ LEARNED: I'll use \"Cheers\" instead of \"Best\" for Elena Rodriguez from now on.\n\nShould I save this as a draft?"
+    },
+    {
+        "role": "human",
+        "text": "Actually I use Cheers for everyone I know well"
+    },
+    {
+        "role": "zylch",
+        "text": "✨ PREFERENCE UPDATED\n\nI've learned that you prefer:\n• \"Cheers\" - for contacts you know well\n• \"Best\" - for formal/new contacts\n\nI'll automatically apply this based on your relationship history with each contact. For example:\n\n• Elena Rodriguez (2+ years, 100+ emails) → \"Cheers\"\n• Maria Santos (8 months, regular contact) → \"Cheers\"\n• New leads/prospects → \"Best\"\n\nThis way your emails will feel natural without you having to think about it.\n\nDraft updated - want me to save it?"
+    },
+    {
+        "role": "human",
+        "text": "yes. Also - I never schedule meetings before 10am"
+    },
+    {
+        "role": "zylch",
+        "text": "DRAFT SAVED ✓\n\n✨ NEW PREFERENCE LEARNED\n\nCalendar: No meetings before 10 AM\n\nI'll apply this when:\n• Suggesting meeting times\n• Creating calendar events\n• Responding to meeting requests\n\nIf someone proposes an early morning slot, I'll suggest alternatives starting at 10 AM.\n\nYour preferences so far:\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n📧 EMAIL\n• Short, concise emails preferred\n• \"Cheers\" for established contacts\n• \"Best\" for new/formal contacts\n\n📅 CALENDAR\n• No meetings before 10 AM\n\n👤 CONTACTS\n• Elena Rodriguez: informal tone, \"Cheers\"\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    },
+    {
+        "role": "human",
+        "text": "/memory --list"
+    },
+    {
+        "role": "zylch",
+        "text": "🧠 YOUR LEARNED PREFERENCES\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n📧 EMAIL PREFERENCES (4 items)\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n1. [HIGH CONFIDENCE] Keep emails concise and direct\n   Learned from: 47 corrections over 3 months\n\n2. [HIGH CONFIDENCE] Use \"Cheers\" for established contacts\n   Learned from: Correction today, pattern confirmed\n\n3. [MEDIUM CONFIDENCE] CC Sarah on deal-related emails\n   Learned from: 12 instances where you added her\n\n4. [MEDIUM CONFIDENCE] Include context from previous emails in replies\n   Learned from: 8 corrections asking for more context\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n📅 CALENDAR PREFERENCES (2 items)\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n1. [HIGH CONFIDENCE] No meetings before 10 AM\n   Learned from: Explicit instruction today\n\n2. [MEDIUM CONFIDENCE] 30-minute default for calls\n   Learned from: Pattern in created meetings\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n👤 CONTACT-SPECIFIC (3 items)\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n1. Elena Rodriguez: informal tone, \"Cheers\"\n2. David Chen: always update on major deals\n3. Lisa Henderson: prefers detailed explanations\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\nUse /memory --delete <number> to remove any preference."
+    }
+]

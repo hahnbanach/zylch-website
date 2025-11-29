@@ -1,0 +1,42 @@
+[
+    {
+        "role": "human",
+        "text": "Share with Sarah that the Henderson deal is moving forward - they confirmed budget"
+    },
+    {
+        "role": "zylch",
+        "text": "INTEL SHARED ✓\n\n📤 Shared with Sarah Mitchell:\n\n\"Henderson Corp deal moving forward - budget confirmed by Marcus Webb (CFO). Meeting scheduled Thursday 2 PM to finalize.\"\n\nContext included:\n• Contact: Henderson Corp (Lisa Henderson, Marcus Webb)\n• Deal stage: Proposal → Negotiation\n• Value: $85,000 annual\n\nSarah will see this the next time she looks up Henderson Corp or checks her briefing.\n\n💡 Since Sarah is CC'd on deal emails, she might already know - but this ensures she has the confirmed status."
+    },
+    {
+        "role": "human",
+        "text": "/share michael@company.com"
+    },
+    {
+        "role": "zylch",
+        "text": "📤 SHARING INVITATION SENT\n\nI've sent a sharing request to:\nmichael@company.com\n\nOnce Michael accepts, you'll be able to:\n• Share contact intel with him\n• See intel he shares with you\n• Collaborate on shared accounts\n\n⏳ STATUS: Pending acceptance\n\nMichael will receive a notification in Zylch to accept your sharing request.\n\n💡 TIP: To share info immediately after he accepts, just say:\n\"Share with Michael that [info about contact]\""
+    },
+    {
+        "role": "human",
+        "text": "/sharing"
+    },
+    {
+        "role": "zylch",
+        "text": "📊 YOUR SHARING STATUS\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n📤 YOU CAN SHARE WITH\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n✓ Sarah Mitchell (sarah@company.com)\n  Mutual sharing enabled\n  Last shared: Henderson budget confirmation (today)\n\n✓ David Chen (david@lexpartners.com)\n  Mutual sharing enabled\n  Last shared: Nextera meeting update (Nov 19)\n\n⏳ Michael Roberts (michael@company.com)\n  Pending acceptance (sent today)\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n📬 PENDING REQUESTS FROM OTHERS\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n1. From: Emily Watson (emily@partner.co)\n   Wants to share intel about: TechCorp contacts\n   Received: 2 days ago\n\n   [Accept] [Decline]\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n📥 RECENTLY RECEIVED\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n• From Sarah (Nov 28):\n  \"CloudNine Systems - Alex mentioned they're also talking to competitor\"\n\n• From David (Nov 25):\n  \"Nextera update: Tom Wilson promoted to SVP, even more decision power\""
+    },
+    {
+        "role": "human",
+        "text": "Accept Emily's request"
+    },
+    {
+        "role": "zylch",
+        "text": "✓ SHARING REQUEST ACCEPTED\n\nYou and Emily Watson can now share intel with each other.\n\n📬 INTEL FROM EMILY (just received):\n\nContact: TechCorp Inc\n\"Met with their CTO yesterday - they're actively evaluating AI solutions. Budget approved for Q1. Contact: James Park, james.park@techcorp.io\"\n\n💡 TIP: Emily seems to have a connection at TechCorp. This could be a warm intro opportunity.\n\nWant me to add James Park to your contacts with this context?"
+    },
+    {
+        "role": "human",
+        "text": "yes, and share back with Emily that I know their VP of Sales"
+    },
+    {
+        "role": "zylch",
+        "text": "CONTACT ADDED ✓\n\n👤 James Park\nEmail: james.park@techcorp.io\nCompany: TechCorp Inc\nRole: CTO\nSource: Shared by Emily Watson\nContext: Evaluating AI solutions, Q1 budget approved\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\nINTEL SHARED WITH EMILY ✓\n\n📤 \"I have a contact at TechCorp - their VP of Sales, Michelle Torres. Met her at the SaaStr conference in September. Happy to make an intro if useful.\"\n\nEmily will see this next time she looks up TechCorp.\n\n🤝 COLLABORATION OPPORTUNITY\nBetween you and Emily, you now have:\n• CTO contact (Emily's connection)\n• VP Sales contact (your connection)\n\nThat's two decision-makers at TechCorp. Want me to draft an intro email connecting Emily with Michelle?"
+    }
+]

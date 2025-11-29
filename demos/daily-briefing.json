@@ -1,0 +1,46 @@
+[
+    {
+        "role": "human",
+        "text": "/sync"
+    },
+    {
+        "role": "zylch",
+        "text": "🌅 GOOD MORNING, JOHN!\n\nHere's your briefing for Monday, December 2, 2025:\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n📅 TODAY'S CALENDAR (4 meetings)\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n9:00 AM  Daily Standup (Product Team)\n11:00 AM  Call with Priya Sharma - Onboarding check-in\n2:00 PM  Demo for Coastal Logistics - New prospect\n4:30 PM  Weekly 1:1 with Sarah\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n📧 EMAILS NEEDING ATTENTION (5 priority)\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n1. ⚠️ Lisa Henderson (Henderson Corp)\n   \"Re: Proposal Review\" - 3 days waiting\n   She asked about timeline and support coverage\n\n2. ⚠️ Marcus Webb (Henderson Corp)\n   \"Budget Approval Process\" - 3 days waiting\n   CFO needs additional documentation\n\n3. 🔴 Robert Kim (TechStart Inc)\n   \"URGENT: Integration issue\" - received 2 hours ago\n   Production system down, needs immediate response\n\n4. Amanda Foster (Nexus Capital)\n   \"Re: Following up\" - received yesterday\n   She responded to your follow-up! Says they want to schedule a call\n\n5. Carlos Rivera (New Lead)\n   \"Inquiry from website\" - received Friday\n   Interested in enterprise plan, asked for demo\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n✅ YOUR PENDING TASKS\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n• Send updated pricing to Maria Santos (BrightWave) - DUE TODAY\n• Prepare demo environment for Coastal Logistics - DUE TODAY\n• Review contract redlines from Rachel - Due tomorrow\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n⚡ QUICK WINS\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n• Reply to Amanda (Nexus) - she's ready to schedule!\n• Respond to Robert's urgent issue before standup\n• Carlos inquiry - quick reply could convert to demo"
+    },
+    {
+        "role": "human",
+        "text": "What's the urgent issue from Robert?"
+    },
+    {
+        "role": "zylch",
+        "text": "Robert Kim's email (received 6:47 AM today):\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\nFrom: robert.kim@techstart.io\nSubject: URGENT: Integration issue\n\n\"John,\n\nOur MrCall integration stopped working around 5 AM PST. Calls are going straight to voicemail instead of the AI assistant.\n\nWe have a product launch today and expecting high call volume. This is critical for us.\n\nCan someone look at this ASAP?\n\n- Robert\"\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\nCONTEXT FROM YOUR HISTORY:\n• TechStart is a paying customer since August\n• Robert is the CTO, usually handles technical issues himself\n• They had a similar issue in September - was an API key rotation\n• Their account is $2,400/month - mid-tier customer\n\n💡 SUGGESTION: This sounds like it could be the same API key issue. Should I draft an immediate response with troubleshooting steps while you escalate to engineering?"
+    },
+    {
+        "role": "human",
+        "text": "/gaps"
+    },
+    {
+        "role": "zylch",
+        "text": "📋 RELATIONSHIP GAPS ANALYSIS\n\nI analyzed your communication patterns across email and calendar.\nHere's who needs attention:\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n🔴 MEETINGS WITHOUT FOLLOW-UP\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n1. JENNIFER WALSH (Meridian Partners)\n   Meeting: Nov 22 - Partnership Discussion\n   ⚠️ No follow-up email sent (10 days ago)\n   She asked for case studies - you said you'd send them\n\n2. ALEX TURNER (CloudNine Systems)\n   Meeting: Nov 19 - Technical Deep Dive\n   ⚠️ No follow-up email sent (13 days ago)\n   His team had integration questions\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n💤 SILENT CONTACTS (usually active)\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n1. DAVID CHEN (LexPartners)\n   Last contact: 18 days ago\n   Usually: Weekly exchanges\n   Pattern break: No Thanksgiving message exchanged\n\n2. PRIYA SHARMA (Innovate Labs)\n   Last contact: 21 days ago\n   Usually: Bi-weekly check-ins\n   Note: She had her product launch - should congratulate her\n\n3. MICHAEL OKONKWO (Sterling Ventures)\n   Last contact: 34 days ago\n   Usually: Monthly\n   He introduced you to two leads last quarter\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n📊 SUMMARY\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n• 2 meetings need follow-up emails\n• 3 key relationships going quiet\n• Risk: Jennifer and Alex deals could go cold\n\nWant me to draft follow-up emails for any of these?"
+    },
+    {
+        "role": "human",
+        "text": "Draft something for Jennifer - include those case studies she asked for"
+    },
+    {
+        "role": "zylch",
+        "text": "Here's a draft for Jennifer:\n\nTo: jennifer.walsh@meridianpartners.com\nSubject: Following up + Case Studies (as promised!)\n\nHi Jennifer,\n\nApologies for the delayed follow-up - wanted to make sure I pulled together the right case studies for your team.\n\nAs promised from our conversation on the 22nd, here are three relevant examples:\n\n1. **Henderson Corp** (Enterprise - Operations)\n   How they reduced call handling time by 60% and improved customer satisfaction scores\n\n2. **BrightWave Technologies** (SaaS - Product Support)\n   AI-powered tier-1 support handling 80% of inbound queries\n\n3. **City of Millbrook** (Government - Citizen Services)\n   Municipal deployment handling permits, appointments, and general inquiries\n\nI remember you were particularly interested in the enterprise rollout process - Henderson Corp is probably the closest match to your situation.\n\nWould love to continue our conversation about the partnership opportunity. Are you available for a follow-up call this week?\n\nBest,\nJohn\n\nP.S. - Hope you had a great Thanksgiving!"
+    },
+    {
+        "role": "zylch",
+        "text": "I've formatted it to reference your actual meeting conversation. Should I:\n1. Save as draft\n2. Send now\n3. Attach actual case study PDFs (if you have them)"
+    },
+    {
+        "role": "human",
+        "text": "save as draft, I'll attach the PDFs manually"
+    },
+    {
+        "role": "zylch",
+        "text": "DRAFT SAVED ✓\n\nThe email to Jennifer Walsh is in your Drafts folder, ready for you to attach the case study PDFs.\n\n📋 I've also:\n• Marked \"Jennifer Walsh follow-up\" as in-progress\n• Added a reminder for tomorrow if the draft hasn't been sent\n\nOne gap down, four more to go! Want me to draft the others?"
+    }
+]
