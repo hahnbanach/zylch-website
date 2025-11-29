@@ -457,7 +457,7 @@
         // Conversation data loaded from JSON file
         let conversation = [];
         let currentDemo = 'daily-briefing';
-        let playbackAborted = false;
+        let currentSessionId = 0;
 
         // Simple markdown parser for chat messages
         function parseMarkdown(text) {
@@ -554,12 +554,12 @@
         }
 
         // Main conversation player
-        async function playConversation() {
+        async function playConversation(sessionId) {
             const chat = document.getElementById('chat');
-            playbackAborted = false;
 
             for (const msg of conversation) {
-                if (playbackAborted) return;
+                // Check if this session is still active
+                if (sessionId !== currentSessionId) return;
 
                 const { container, content } = createMessage(msg);
                 chat.appendChild(container);
@@ -585,22 +585,27 @@
                     await sleep(2500);
                 }
 
-                if (playbackAborted) return;
+                // Check again after sleep
+                if (sessionId !== currentSessionId) return;
             }
 
             // Pause before restart
             await sleep(3000);
 
-            if (playbackAborted) return;
+            // Check if still active before restart
+            if (sessionId !== currentSessionId) return;
 
             // Clear and restart
             chat.innerHTML = '';
-            playConversation();
+            playConversation(sessionId);
         }
 
         // Load and switch demo
         async function loadDemo(demoName) {
-            playbackAborted = true;
+            // Increment session ID to invalidate any running playback
+            currentSessionId++;
+            const sessionId = currentSessionId;
+
             currentDemo = demoName;
 
             // Update active tab
@@ -612,12 +617,17 @@
             const chat = document.getElementById('chat');
             chat.innerHTML = '';
 
+            // Small delay to ensure previous playback stops
+            await sleep(100);
+
+            // Check if we're still the current session
+            if (sessionId !== currentSessionId) return;
+
             // Load new conversation
             try {
                 const response = await fetch(`demos/${demoName}.json`);
                 conversation = await response.json();
-                playbackAborted = false;
-                playConversation();
+                playConversation(sessionId);
             } catch (error) {
                 console.error('Failed to load demo:', error);
                 chat.innerHTML = '<p style="color: #888; text-align: center; padding: 2rem;">Failed to load demo...</p>';
