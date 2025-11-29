@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The Economy of Zylch - Why neurosymbolic AI creates real business value.">
+    <title>The Economy of Zylch - Zylch AI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Variables */
+        :root {
+            --bg-primary: #ffffff;
+            --text-primary: #1a1a1a;
+            --text-muted: #888888;
+            --text-link: #666666;
+            --accent: #4a9eff;
+            --chat-bg: #1e1e2e;
+            --chat-header-bg: #16161e;
+            --chat-human-bg: #2d2d44;
+            --radius: 24px;
+            --radius-sm: 12px;
+            --shadow: 0 2px 8px rgba(0,0,0,0.08);
+            --shadow-lg: 0 8px 32px rgba(0,0,0,0.12);
+        }
+
+        /* Reset */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Base */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Navigation */
+        .nav {
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .logo:hover {
+            opacity: 0.8;
+        }
+
+        .back-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .back-link:hover {
+            color: var(--text-primary);
+        }
+
+        /* Container */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 4rem 0 5rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+        }
+
+        .hero .subline {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Section */
+        .section {
+            padding: 4rem 0;
+            border-top: 1px solid #f0f0f0;
+        }
+
+        .section h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.01em;
+        }
+
+        .section p {
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .section p:last-child {
+            margin-bottom: 0;
+        }
+
+        .section strong {
+            color: var(--text-primary);
+        }
+
+        /* Quote Block */
+        .quote-block {
+            background: #f8f9fa;
+            border-left: 4px solid var(--accent);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+        }
+
+        .quote-block p {
+            color: var(--text-primary);
+            font-style: italic;
+            margin: 0;
+        }
+
+        /* Comparison Cards */
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .comparison-card {
+            background: var(--chat-bg);
+            border-radius: var(--radius-sm);
+            padding: 1.5rem;
+        }
+
+        .comparison-card h3 {
+            color: #fff;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .comparison-card ul {
+            list-style: none;
+            color: #a0a0a0;
+            font-size: 0.9rem;
+        }
+
+        .comparison-card li {
+            margin: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .comparison-card li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #27ca3f;
+        }
+
+        .comparison-card.limitations li::before {
+            content: "✗";
+            color: #ff5f56;
+        }
+
+        /* Fusion Diagram */
+        .fusion-diagram {
+            background: var(--chat-bg);
+            border-radius: var(--radius-sm);
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .fusion-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .fusion-box {
+            background: var(--chat-human-bg);
+            padding: 1rem 1.5rem;
+            border-radius: var(--radius-sm);
+            color: #e4e4e7;
+            font-size: 0.9rem;
+        }
+
+        .fusion-plus {
+            color: #888;
+            font-size: 1.5rem;
+        }
+
+        .fusion-arrow {
+            color: #888;
+            font-size: 1.5rem;
+        }
+
+        .fusion-result {
+            background: linear-gradient(135deg, #4a9eff 0%, #6366f1 100%);
+            padding: 1rem 2rem;
+            border-radius: var(--radius-sm);
+            color: white;
+            font-weight: 600;
+        }
+
+        /* Value Cards */
+        .value-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .value-card {
+            background: #f8f9fa;
+            border-radius: var(--radius-sm);
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .value-icon {
+            font-size: 2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .value-card h4 {
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .value-card p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin: 0;
+        }
+
+        /* CTA Section */
+        .cta {
+            padding: 5rem 0;
+            text-align: center;
+            border-top: 1px solid #f0f0f0;
+        }
+
+        .cta h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--text-primary);
+            color: var(--bg-primary);
+            text-decoration: none;
+            border-radius: var(--radius);
+            font-weight: 500;
+            font-size: 1rem;
+            transition: background 0.2s ease;
+        }
+
+        .cta-button:hover {
+            background: #333;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 2rem;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero .subline {
+                font-size: 1rem;
+            }
+
+            .section {
+                padding: 3rem 0;
+            }
+
+            .section h2 {
+                font-size: 1.3rem;
+            }
+
+            .comparison {
+                grid-template-columns: 1fr;
+            }
+
+            .fusion-row {
+                flex-direction: column;
+            }
+
+            .value-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .cta h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <a href="index.html" class="logo">Zylch</a>
+        <a href="index.html" class="back-link">&larr; Back</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero container">
+        <h1>The Economy of Zylch</h1>
+        <p class="subline">Why AI that wins math olympiads still can't manage your inbox.</p>
+    </section>
+
+    <!-- Section 1: The Paradox -->
+    <section class="section container">
+        <h2>The smartest useless thing ever built</h2>
+
+        <p>Today's AI can write poetry, pass the bar exam, and solve problems that stumped mathematicians for decades. It's the most impressive technology humanity has ever created.</p>
+
+        <p>And yet it can't remember what you told it yesterday.</p>
+
+        <div class="quote-block">
+            <p>"I already explained this three times. Why doesn't it remember?"</p>
+        </div>
+
+        <p>This is the paradox of modern AI: <strong>infinitely intelligent, operationally useless</strong>. It can discuss quantum physics, but it can't follow up on an email you sent last week. It can generate a business plan, but it can't actually execute a single step of it.</p>
+
+        <p>We've built genius-level minds with the memory of a goldfish and the agency of a paperweight.</p>
+    </section>
+
+    <!-- Section 2: Why It Fails -->
+    <section class="section container">
+        <h2>The missing pieces</h2>
+
+        <p>Generative AI—the technology behind ChatGPT, Claude, and every other chatbot—is brilliant at pattern matching and language. But it fundamentally doesn't understand three things that matter for real work:</p>
+
+        <div class="comparison">
+            <div class="comparison-card limitations">
+                <h3>🧠 Generative AI Can't...</h3>
+                <ul>
+                    <li>Remember "I told you this yesterday"</li>
+                    <li>Execute "If X happens, do Y"</li>
+                    <li>Track state across conversations</li>
+                    <li>Take reliable, repeatable actions</li>
+                    <li>Guarantee correct outputs</li>
+                </ul>
+            </div>
+            <div class="comparison-card">
+                <h3>💼 But Work Requires...</h3>
+                <ul>
+                    <li>Persistent memory of context</li>
+                    <li>Conditional logic and rules</li>
+                    <li>Stateful workflows</li>
+                    <li>Reliable task execution</li>
+                    <li>Verifiable correctness</li>
+                </ul>
+            </div>
+        </div>
+
+        <p>This isn't a bug in the models—it's a fundamental limitation of how they work. Generative AI predicts the next token. It doesn't <em>know</em> things, track things, or do things. It just speaks very convincingly.</p>
+    </section>
+
+    <!-- Section 3: The Old Way Still Works -->
+    <section class="section container">
+        <h2>The forgotten genius of IF...THEN...ELSE</h2>
+
+        <p>There's another kind of AI that everyone seems to have forgotten. It's not sexy. It doesn't generate art or pass exams. But it runs the world.</p>
+
+        <p><strong>Symbolic AI</strong>—rule-based systems, logic engines, the humble IF...THEN...ELSE—powers everything from banking systems to air traffic control to the tax code. It's the Turing machine. The von Neumann architecture. The foundation of the digital economy.</p>
+
+        <p>Symbolic AI has something generative AI lacks: <strong>reliability</strong>.</p>
+
+        <div class="comparison">
+            <div class="comparison-card">
+                <h3>⚡ Generative AI</h3>
+                <ul>
+                    <li>Flexible and creative</li>
+                    <li>Understands natural language</li>
+                    <li>Handles ambiguity well</li>
+                    <li>Learns from examples</li>
+                    <li>Adapts to new situations</li>
+                </ul>
+            </div>
+            <div class="comparison-card">
+                <h3>🔧 Symbolic AI</h3>
+                <ul>
+                    <li>Deterministic and predictable</li>
+                    <li>Executes exact instructions</li>
+                    <li>Tracks state perfectly</li>
+                    <li>Follows rules absolutely</li>
+                    <li>Verifiable correctness</li>
+                </ul>
+            </div>
+        </div>
+
+        <p>The problem is: symbolic AI can't understand "remind me about that thing." And generative AI can't reliably do "that thing" when the time comes.</p>
+
+        <p>What if you didn't have to choose?</p>
+    </section>
+
+    <!-- Section 4: The Fusion -->
+    <section class="section container">
+        <h2>Neurosymbolic AI: the best of both</h2>
+
+        <p>Zylch uses <strong>neurosymbolic AI</strong>—a fusion of generative and symbolic approaches. This isn't marketing buzzword. It's an architectural choice that makes AI actually useful.</p>
+
+        <div class="fusion-diagram">
+            <div class="fusion-row">
+                <div class="fusion-box">🧠 Generative AI<br><small>Flexibility + Understanding</small></div>
+                <span class="fusion-plus">+</span>
+                <div class="fusion-box">🔧 Symbolic AI<br><small>Reliability + Execution</small></div>
+            </div>
+            <div class="fusion-arrow">↓</div>
+            <div class="fusion-result">Zylch: AI that understands AND acts</div>
+        </div>
+
+        <p>Here's how it works:</p>
+
+        <p><strong>Generative AI handles the interface.</strong> You speak naturally. "Remind Sofia about the demo tomorrow." The LLM understands your intent, disambiguates who Sofia is, and figures out what "the demo" refers to from context.</p>
+
+        <p><strong>Symbolic AI handles the execution.</strong> A rule fires: IF [tomorrow arrives] AND [reminder not sent] THEN [send reminder to Sofia]. No hallucination. No forgetting. No "I don't have access to that."</p>
+
+        <p>The result: an AI that <em>understands</em> like a human but <em>executes</em> like a machine.</p>
+    </section>
+
+    <!-- Section 5: The Economic Value -->
+    <section class="section container">
+        <h2>Why this matters for your business</h2>
+
+        <p>The difference between "AI that talks" and "AI that acts" is the difference between a consultant and an employee. One gives you advice. The other gets things done.</p>
+
+        <div class="value-cards">
+            <div class="value-card">
+                <div class="value-icon">⏱️</div>
+                <h4>Time Recovered</h4>
+                <p>Hours spent on follow-ups, reminders, and admin work—automated</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">🎯</div>
+                <h4>Nothing Falls Through</h4>
+                <p>Every commitment tracked, every follow-up executed</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">📈</div>
+                <h4>Compounding Knowledge</h4>
+                <p>Every interaction makes the system smarter about your work</p>
+            </div>
+        </div>
+
+        <p>Traditional AI assistants are like interns with amnesia: helpful in the moment, but you have to re-explain everything every time. Zylch is like a chief of staff who's been with you for years: knows your contacts, remembers your commitments, and actually follows through.</p>
+
+        <p>That's not incremental improvement. That's a different category of value.</p>
+    </section>
+
+    <!-- Section 6: The Bottom Line -->
+    <section class="section container">
+        <h2>The bottom line</h2>
+
+        <p>Generative AI alone is a party trick. Impressive, but not useful for real work.</p>
+
+        <p>Symbolic AI alone is powerful but rigid. It can't understand natural language or adapt to ambiguity.</p>
+
+        <p><strong>Together, they create something new:</strong> AI that understands what you mean, remembers what you said, and actually does what you need.</p>
+
+        <p>That's not artificial intelligence. That's <em>useful</em> intelligence.</p>
+
+        <p>That's Zylch.</p>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta container">
+        <h2>Ready for AI that works?</h2>
+        <a href="index.html" class="cta-button">Join the Waitlist</a>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <a href="index.html" class="logo" style="font-size: 1.2rem; display: block; margin-bottom: 0.5rem;">Zylch</a>
+    </footer>
+</body>
+</html>
