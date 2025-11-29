@@ -176,12 +176,6 @@
             margin-bottom: 1rem;
             text-transform: uppercase;
             letter-spacing: 0.1em;
-            cursor: pointer;
-            transition: color 0.2s ease;
-        }
-
-        .demo-label:hover {
-            color: var(--text-primary);
         }
 
         /* Demo Tabs */
@@ -428,7 +422,7 @@
 
     <!-- Demo Section -->
     <section class="demo-section">
-        <span class="demo-label" id="demo-label">Live Demo - Click to Pause</span>
+        <span class="demo-label">Live Demo</span>
 
         <div class="demo-tabs" id="demo-tabs">
             <button class="demo-tab active" data-demo="daily-briefing">Daily Briefing</button>
@@ -453,7 +447,6 @@
     <script>
         // Conversation data loaded from JSON file
         let conversation = [];
-        let isPaused = false;
         let currentDemo = 'daily-briefing';
         let playbackAborted = false;
 
@@ -540,22 +533,9 @@
             });
         }
 
-        // Sleep utility with pause support
+        // Sleep utility
         function sleep(ms) {
-            return new Promise(resolve => {
-                const checkPause = () => {
-                    if (playbackAborted) {
-                        resolve();
-                        return;
-                    }
-                    if (isPaused) {
-                        setTimeout(checkPause, 100);
-                    } else {
-                        setTimeout(resolve, ms);
-                    }
-                };
-                checkPause();
-            });
+            return new Promise(resolve => setTimeout(resolve, ms));
         }
 
         // Auto-scroll chat
@@ -609,17 +589,6 @@
             playConversation();
         }
 
-        // Toggle pause/resume
-        function togglePause() {
-            isPaused = !isPaused;
-            const label = document.getElementById('demo-label');
-            if (isPaused) {
-                label.textContent = 'Paused - Click to Resume';
-            } else {
-                label.textContent = 'Live Demo - Click to Pause';
-            }
-        }
-
         // Load and switch demo
         async function loadDemo(demoName) {
             playbackAborted = true;
@@ -639,8 +608,6 @@
                 const response = await fetch(`demos/${demoName}.json`);
                 conversation = await response.json();
                 playbackAborted = false;
-                isPaused = false;
-                document.getElementById('demo-label').textContent = 'Live Demo - Click to Pause';
                 playConversation();
             } catch (error) {
                 console.error('Failed to load demo:', error);
@@ -722,10 +689,6 @@
 
         // Load conversation from JSON and start demo
         async function init() {
-            // Set up event listeners
-            document.getElementById('demo-label').addEventListener('click', togglePause);
-            document.getElementById('chat-container').addEventListener('click', togglePause);
-
             // Set up tab clicks
             document.querySelectorAll('.demo-tab').forEach(tab => {
                 tab.addEventListener('click', () => loadDemo(tab.dataset.demo));
