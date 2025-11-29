@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Zylch AI - Your AI assistant for business communication. Manage emails, enrich contacts, and automate follow-ups.">
     <title>Zylch AI - Business Communication Assistant</title>
+    <link rel="icon" type="image/x-icon" href="logo/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="logo/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="logo/favicon-16.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -56,11 +59,14 @@
             padding: 4rem 2rem 2rem;
         }
 
-        .logo {
-            font-size: 4rem;
-            font-weight: 600;
-            letter-spacing: -0.02em;
+        .logo-link {
+            display: block;
             margin-bottom: 0.5rem;
+        }
+
+        .logo-img {
+            height: 60px;
+            width: auto;
         }
 
         .tagline {
@@ -403,7 +409,9 @@
 <body>
     <!-- Hero Section -->
     <section class="hero">
-        <h1 class="logo">Zylch</h1>
+        <a href="index.html" class="logo-link">
+            <img src="logo/zylch-horizontal.svg" alt="Zylch" class="logo-img" height="60">
+        </a>
         <p class="tagline">Your AI assistant for business communication</p>
 
         <form class="waitlist-form" id="signup-form">
