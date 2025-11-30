@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Build with Zylch - Create AI-powered products that bridge modern intelligence with legacy systems.">
+    <title>Build with Zylch - Zylch AI</title>
+    <link rel="icon" type="image/x-icon" href="logo/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="logo/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="logo/favicon-16.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/common.css">
+    <style>
+        /* Build page specific styles */
+        :root {
+            --bg-dark: #1e1e2e;
+            --text-light: #e4e4e7;
+        }
+
+        /* Section */
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section:first-of-type {
+            padding-top: 7rem;
+        }
+
+        .section-light {
+            background: var(--bg-primary);
+            color: var(--text-primary);
+        }
+
+        .section-dark {
+            background: var(--bg-dark);
+            color: var(--text-light);
+        }
+
+        /* Typography */
+        .label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            font-weight: 600;
+            display: block;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .lead {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+
+        .section-dark .lead {
+            color: #a1a1aa;
+        }
+
+        h2 {
+            font-size: 1.75rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        /* Case Study Cards */
+        .case-studies {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .case-card {
+            background: var(--bg-primary);
+            border-radius: var(--radius);
+            padding: 2rem;
+            box-shadow: var(--shadow);
+        }
+
+        .case-card .tag {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            display: block;
+        }
+
+        .case-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .case-card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .case-card .flow {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .case-card .flow-item {
+            font-size: 0.75rem;
+            padding: 0.35rem 0.75rem;
+            background: #f5f5f5;
+            border-radius: 20px;
+            color: var(--text-muted);
+        }
+
+        .case-card .flow-arrow {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+
+        .case-card .flow-item.legacy {
+            background: #fff3e0;
+            color: #e65100;
+        }
+
+        /* Features */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .feature {
+            padding: 1.5rem 0;
+        }
+
+        .feature h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-light);
+        }
+
+        .feature p {
+            font-size: 0.9rem;
+            color: #a1a1aa;
+            line-height: 1.6;
+        }
+
+        /* Timeline */
+        .timeline {
+            margin-top: 2rem;
+            padding-left: 1.5rem;
+            border-left: 2px solid var(--accent);
+        }
+
+        .timeline-item {
+            margin-bottom: 2rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 0.5rem;
+            width: 10px;
+            height: 10px;
+            background: var(--accent);
+            border-radius: 50%;
+            margin-left: -4px;
+        }
+
+        .timeline-item .year {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 0.25rem;
+        }
+
+        .timeline-item p {
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        /* CTA */
+        .cta {
+            text-align: center;
+            padding: 5rem 2rem;
+        }
+
+        .cta h2 {
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--text-primary);
+            color: var(--bg-primary);
+            text-decoration: none;
+            border-radius: var(--radius);
+            font-weight: 500;
+            transition: background 0.2s ease;
+        }
+
+        .cta-button:hover {
+            background: #333;
+        }
+
+        .cta-subtext {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .section {
+                padding: 3rem 0;
+            }
+
+            .section:first-of-type {
+                padding-top: 5rem;
+            }
+
+            .case-card .flow {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .case-card .flow-arrow {
+                transform: rotate(90deg);
+                margin: 0.25rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="site-header">
+        <a href="index.html">
+            <img src="logo/zylch-horizontal.svg" alt="Zylch" class="header-logo">
+        </a>
+        <a href="#" class="sign-in-btn">Sign in</a>
+    </header>
+
+    <!-- Section 1: Hero -->
+    <section class="section section-light">
+        <div class="container">
+            <span class="label">Build with Zylch</span>
+            <h1>Your AI. Your Product.</h1>
+            <p class="lead">Zylch is built on technology developed by Hahn Banach since 2021. Now you can use it to build your own AI-powered products.</p>
+        </div>
+    </section>
+
+    <!-- Section 2: The Problem -->
+    <section class="section section-dark">
+        <div class="container">
+            <h2>AI meets the real world</h2>
+            <p>Modern AI is incredibly powerful at understanding natural language, images, and complex requests. But the real world runs on legacy systems: SOAP APIs, government portals, decades-old databases, fax machines.</p>
+            <p>Zylch bridges that gap. It lets AI handle semantically rich interactions while seamlessly integrating with the systems that actually run your business.</p>
+
+            <div class="features">
+                <div class="feature">
+                    <h3>Semantic Understanding</h3>
+                    <p>Process natural language, images, documents, and voice with full context awareness.</p>
+                </div>
+                <div class="feature">
+                    <h3>Legacy Integration</h3>
+                    <p>Connect to SOAP, REST, XML-RPC, FTP, or any protocol your systems require.</p>
+                </div>
+                <div class="feature">
+                    <h3>Memory & Context</h3>
+                    <p>Maintain conversation history, user preferences, and business rules across interactions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Case Studies -->
+    <section class="section section-light">
+        <div class="container">
+            <span class="label">Case Studies</span>
+            <h2>Built on Zylch</h2>
+            <p>See how teams are using Zylch to create products that would have been impossible before.</p>
+
+            <div class="case-studies">
+                <div class="case-card">
+                    <span class="tag">Hospitality / Italy</span>
+                    <h3>ZylchBnB</h3>
+                    <p>AI-powered guest communication for Italian vacation rentals. Guests chat naturally to check in, while the system handles government compliance automatically.</p>
+                    <div class="flow">
+                        <span class="flow-item">Guest photo of ID</span>
+                        <span class="flow-arrow">→</span>
+                        <span class="flow-item">AI validation</span>
+                        <span class="flow-arrow">→</span>
+                        <span class="flow-item legacy">SOAP API to Police</span>
+                        <span class="flow-arrow">→</span>
+                        <span class="flow-item">Room access link</span>
+                    </div>
+                </div>
+
+                <div class="case-card">
+                    <span class="tag">Healthcare / USA</span>
+                    <h3>ZylchCare</h3>
+                    <p>Patient intake automation for medical practices. Patients describe symptoms naturally, while the system handles insurance verification and scheduling.</p>
+                    <div class="flow">
+                        <span class="flow-item">Patient conversation</span>
+                        <span class="flow-arrow">→</span>
+                        <span class="flow-item">AI triage</span>
+                        <span class="flow-arrow">→</span>
+                        <span class="flow-item legacy">EDI 270/271 to payer</span>
+                        <span class="flow-arrow">→</span>
+                        <span class="flow-item">Appointment confirmed</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: Our Story -->
+    <section class="section section-dark">
+        <div class="container">
+            <span class="label" style="color: var(--text-light);">Our Story</span>
+            <h2>Built over years, not months</h2>
+            <p>Zylch isn't a wrapper around ChatGPT. It's the result of years of research into how AI can actually work in production environments.</p>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <span class="year">2021</span>
+                    <p>Hahn Banach founded. Initial research into semantic memory systems.</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="year">2022</span>
+                    <p>First production deployment of vector-based contact memory.</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="year">2023</span>
+                    <p>Multi-agent architecture developed. Legacy system integration framework.</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="year">2024</span>
+                    <p>Zylch platform launched. First partner products go live.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5: CTA -->
+    <section class="section section-light cta">
+        <div class="container">
+            <h2>Ready to build?</h2>
+            <a href="mailto:build@zylchai.com" class="cta-button">Contact Us</a>
+            <p class="cta-subtext">Tell us about your project. We'll help you figure out if Zylch is the right fit.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-left">
+            <a href="technology.html">Technology</a>
+        </div>
+        <div class="footer-right">
+            <a href="terms.html">Terms</a>
+            <a href="privacy.html">Privacy</a>
+        </div>
+    </footer>
+</body>
+</html>
