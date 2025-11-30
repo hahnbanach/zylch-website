@@ -552,15 +552,7 @@
                 if (sessionId !== currentSessionId) return;
             }
 
-            // Pause before restart
-            await sleep(3000);
-
-            // Check if still active before restart
-            if (sessionId !== currentSessionId) return;
-
-            // Clear and restart
-            chat.innerHTML = '';
-            playConversation(sessionId);
+            // Done - conversation stays visible
         }
 
         // Load and switch demo
