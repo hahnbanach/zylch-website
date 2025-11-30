@@ -106,13 +106,20 @@
             color: #ff5f56;
         }
 
-        .privacy-note {
-            margin-top: 0.5rem;
-            font-size: 0.75rem;
+        /* Two-step form */
+        #step-email,
+        #step-confirm {
+            display: flex;
+            width: 100%;
+        }
+
+        .confirm-text {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            font-size: 0.85rem;
             color: var(--text-muted);
-            max-width: 500px;
-            text-align: center;
-            line-height: 1.5;
+            display: flex;
+            align-items: center;
         }
 
         /* Navigation Links */
@@ -362,12 +369,19 @@
         </a>
         <p class="tagline">Your AI assistant for business communication</p>
 
-        <form class="waitlist-form" id="signup-form">
-            <input type="email" id="email-input" placeholder="your.name@company.com" required>
-            <button type="submit" id="submit-btn">Get Started</button>
-        </form>
+        <div class="waitlist-form" id="signup-form">
+            <!-- Step 1: Email input -->
+            <div id="step-email">
+                <input type="email" id="email-input" placeholder="your.name@company.com" required>
+                <button type="button" id="btn-get-started">Get Started</button>
+            </div>
+            <!-- Step 2: Confirmation -->
+            <div id="step-confirm" style="display: none;">
+                <span class="confirm-text">Your data won't be shared or used for marketing.</span>
+                <button type="button" id="btn-confirm">Let's go!</button>
+            </div>
+        </div>
         <p class="form-message" id="form-message"></p>
-        <p class="privacy-note">By submitting, you agree to receive an email from Zylch AI. Your data is used solely to evaluate our service and will not be shared with third parties or used for marketing.</p>
 
         <nav class="nav-links">
             <a href="learn.html">I want to know more</a>
@@ -603,22 +617,47 @@
             msg.className = 'form-message';
         }
 
-        // Signup form handler
-        document.getElementById('signup-form').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const email = document.getElementById('email-input').value.trim();
+        // Store email between steps
+        let pendingEmail = '';
+
+        // Handle Enter key in email input
+        document.getElementById('email-input').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                document.getElementById('btn-get-started').click();
+            }
+        });
+
+        // Step 1: Get Started - validate and show confirmation
+        document.getElementById('btn-get-started').addEventListener('click', () => {
+            const emailInput = document.getElementById('email-input');
+            const email = emailInput.value.trim();
             const domain = email.split('@')[1]?.toLowerCase();
-            const btn = document.getElementById('submit-btn');
 
             clearMessage();
 
-            // Client-side validation
+            // Basic validation
+            if (!email || !email.includes('@')) {
+                showMessage('Please enter a valid email address', 'error');
+                return;
+            }
+
+            // Business email validation
             if (BLOCKED_DOMAINS.includes(domain)) {
                 showMessage('Please use your business email address', 'error');
                 return;
             }
 
-            // Submit to API
+            // Store email and show confirmation step
+            pendingEmail = email;
+            document.getElementById('step-email').style.display = 'none';
+            document.getElementById('step-confirm').style.display = 'flex';
+        });
+
+        // Step 2: Let's go! - actually submit
+        document.getElementById('btn-confirm').addEventListener('click', async () => {
+            const btn = document.getElementById('btn-confirm');
+
             btn.textContent = 'Sending...';
             btn.disabled = true;
 
@@ -626,23 +665,30 @@
                 const res = await fetch('/api/signup', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ email })
+                    body: JSON.stringify({ email: pendingEmail })
                 });
 
                 const data = await res.json();
 
                 if (res.ok) {
                     showMessage('Check your inbox! Zylch just sent you an email.', 'success');
+                    // Reset form
                     document.getElementById('email-input').value = '';
+                    document.getElementById('step-confirm').style.display = 'none';
+                    document.getElementById('step-email').style.display = 'flex';
+                    pendingEmail = '';
                 } else if (data.error === 'business_email_required') {
                     showMessage('Please use your business email address', 'error');
+                    // Go back to email step
+                    document.getElementById('step-confirm').style.display = 'none';
+                    document.getElementById('step-email').style.display = 'flex';
                 } else {
                     showMessage(data.message || 'Something went wrong. Please try again.', 'error');
                 }
             } catch (err) {
                 showMessage('Network error. Please try again.', 'error');
             } finally {
-                btn.textContent = 'Get Started';
+                btn.textContent = "Let's go!";
                 btn.disabled = false;
             }
         });
