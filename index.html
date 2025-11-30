@@ -45,6 +45,42 @@
             -webkit-font-smoothing: antialiased;
         }
 
+        /* Header */
+        .site-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            background: var(--bg-primary);
+            z-index: 100;
+        }
+
+        .header-logo {
+            height: 28px;
+            width: auto;
+        }
+
+        .sign-in-btn {
+            padding: 0.5rem 1rem;
+            border: 1px solid rgba(0,0,0,0.1);
+            border-radius: 20px;
+            background: transparent;
+            color: var(--text-primary);
+            font-size: 0.85rem;
+            font-family: inherit;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.2s ease;
+        }
+
+        .sign-in-btn:hover {
+            background: #f5f5f5;
+        }
+
         /* Hero Section */
         .hero {
             min-height: 60vh;
@@ -52,7 +88,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 4rem 2rem 2rem;
+            padding: 5rem 2rem 2rem;
         }
 
         .logo-link {
@@ -63,6 +99,34 @@
         .logo-img {
             height: 60px;
             width: auto;
+        }
+
+        /* Footer */
+        .site-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            border-top: 1px solid rgba(0,0,0,0.06);
+            margin-top: 2rem;
+        }
+
+        .footer-left a,
+        .footer-right a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.8rem;
+            margin-right: 1.5rem;
+        }
+
+        .footer-right a {
+            margin-right: 0;
+            margin-left: 1.5rem;
+        }
+
+        .footer-left a:hover,
+        .footer-right a:hover {
+            color: var(--text-primary);
         }
 
         .tagline {
@@ -378,6 +442,14 @@
     </style>
 </head>
 <body>
+    <!-- Header -->
+    <header class="site-header">
+        <a href="index.html">
+            <img src="logo/zylch-horizontal.svg" alt="Zylch" class="header-logo">
+        </a>
+        <a href="#" class="sign-in-btn">Sign in</a>
+    </header>
+
     <!-- Hero Section -->
     <section class="hero">
         <a href="index.html" class="logo-link">
@@ -396,7 +468,6 @@
             <a href="learn.html">I want to know more</a>
             <a href="economy.html">The Economy of Zylch</a>
             <a href="mission.html">Mission</a>
-            <a href="technology.html">Technology</a>
         </nav>
     </section>
 
@@ -685,5 +756,16 @@
         // Start the demo when page loads
         document.addEventListener('DOMContentLoaded', init);
     </script>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-left">
+            <a href="technology.html">Technology</a>
+        </div>
+        <div class="footer-right">
+            <a href="terms.html">Terms</a>
+            <a href="privacy.html">Privacy</a>
+        </div>
+    </footer>
 </body>
 </html>
