@@ -117,9 +117,17 @@
             flex: 1;
             padding: 1rem 1.5rem;
             font-size: 0.85rem;
-            color: var(--text-muted);
+            color: var(--text-primary);
             display: flex;
             align-items: center;
+        }
+
+        #btn-confirm {
+            background: #27ca3f;
+        }
+
+        #btn-confirm:hover {
+            background: #22b338;
         }
 
         /* Navigation Links */
@@ -378,7 +386,7 @@
             <!-- Step 2: Confirmation -->
             <div id="step-confirm" style="display: none;">
                 <span class="confirm-text">Your data won't be shared or used for marketing.</span>
-                <button type="button" id="btn-confirm">Let's go!</button>
+                <button type="button" id="btn-confirm">I agree</button>
             </div>
         </div>
         <p class="form-message" id="form-message"></p>
@@ -688,7 +696,7 @@
             } catch (err) {
                 showMessage('Network error. Please try again.', 'error');
             } finally {
-                btn.textContent = "Let's go!";
+                btn.textContent = "I agree";
                 btn.disabled = false;
             }
         });
