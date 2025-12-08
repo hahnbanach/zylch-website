@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="How Zylch AI Works - Proprietary neurosymbolic architecture combining LLM intelligence with reliable execution.">
+    <title>Our AI - Zylch</title>
+    <link rel="icon" type="image/x-icon" href="logo/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="logo/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="logo/favicon-16.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/common.css">
+    <style>
+        /* AI page specific styles */
+        :root {
+            --bg-dark: #1e1e2e;
+            --text-light: #e4e4e7;
+            --accent-green: #27ca3f;
+            --accent-orange: #ff9f43;
+        }
+
+        /* Container */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Section */
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section:first-of-type {
+            padding-top: 7rem;
+        }
+
+        .section-light {
+            background: var(--bg-primary);
+            color: var(--text-primary);
+        }
+
+        .section-dark {
+            background: var(--bg-dark);
+            color: var(--text-light);
+        }
+
+        .section-dark .text-muted {
+            color: #a1a1aa;
+        }
+
+        /* Typography */
+        .label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--text-primary);
+        }
+
+        .section-dark h3 {
+            color: var(--text-light);
+        }
+
+        p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-muted);
+        }
+
+        .section-dark p {
+            color: #a1a1aa;
+        }
+
+        p:last-child {
+            margin-bottom: 0;
+        }
+
+        .lead {
+            font-size: 1.3rem;
+            line-height: 1.6;
+        }
+
+        strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .section-dark strong {
+            color: var(--text-light);
+        }
+
+        .highlight {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        /* Statement (big bold text) */
+        .statement {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            line-height: 1.4;
+            margin: 2rem 0;
+            padding-left: 1.5rem;
+            border-left: 4px solid var(--accent);
+        }
+
+        .section-dark .statement {
+            color: var(--text-light);
+        }
+
+        /* Architecture Diagram */
+        .arch-diagram {
+            background: var(--bg-dark);
+            border-radius: var(--radius-sm);
+            padding: 2.5rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .arch-layers {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .arch-layer {
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .arch-layer.user {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .arch-layer.llm {
+            background: linear-gradient(135deg, #4a9eff 0%, #6366f1 100%);
+            color: white;
+        }
+
+        .arch-layer.memory {
+            background: linear-gradient(135deg, #27ca3f 0%, #22b338 100%);
+            color: white;
+        }
+
+        .arch-layer.symbolic {
+            background: linear-gradient(135deg, #ff9f43 0%, #e65100 100%);
+            color: white;
+        }
+
+        .arch-layer.execution {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #a1a1aa;
+        }
+
+        .arch-arrow {
+            color: #666;
+            font-size: 1.2rem;
+        }
+
+        /* Feature Grid */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .feature-item {
+            padding: 1.5rem;
+            background: rgba(74, 158, 255, 0.05);
+            border-radius: var(--radius-sm);
+            border-left: 3px solid var(--accent);
+        }
+
+        .section-dark .feature-item {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .feature-item h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-item p {
+            font-size: 0.95rem;
+            margin-bottom: 0;
+        }
+
+        /* Comparison Table */
+        .comparison-table {
+            width: 100%;
+            margin: 2rem 0;
+            border-collapse: collapse;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .comparison-table th {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .comparison-table td {
+            font-size: 0.9rem;
+            color: #a1a1aa;
+        }
+
+        .comparison-table td:first-child {
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        .comparison-table .check {
+            color: var(--accent-green);
+        }
+
+        .comparison-table .cross {
+            color: #ff5f56;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: rgba(74, 158, 255, 0.05);
+            border-radius: var(--radius-sm);
+        }
+
+        .section-dark .stat-item {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .section-dark .stat-label {
+            color: #a1a1aa;
+        }
+
+        /* Timeline */
+        .timeline {
+            margin: 2rem 0;
+            padding-left: 1.5rem;
+            border-left: 2px solid var(--accent);
+        }
+
+        .timeline-item {
+            margin-bottom: 2rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 0.4rem;
+            width: 10px;
+            height: 10px;
+            background: var(--accent);
+            border-radius: 50%;
+            margin-left: -4px;
+        }
+
+        .timeline-item .year {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 0.25rem;
+        }
+
+        .timeline-item p {
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        /* CTA Section */
+        .cta {
+            padding: 5rem 0;
+            text-align: center;
+            background: var(--bg-primary);
+        }
+
+        .cta h2 {
+            margin-bottom: 1rem;
+        }
+
+        .cta p {
+            max-width: 500px;
+            margin: 0 auto 2rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--text-primary);
+            color: var(--bg-primary);
+            text-decoration: none;
+            border-radius: var(--radius);
+            font-weight: 500;
+            font-size: 1rem;
+            transition: background 0.2s ease;
+        }
+
+        .cta-button:hover {
+            background: #333;
+        }
+
+        .cta-links {
+            margin-top: 1.5rem;
+        }
+
+        .cta-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin: 0 1rem;
+        }
+
+        .cta-links a:hover {
+            color: var(--text-primary);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .section {
+                padding: 3rem 0;
+            }
+
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            .lead {
+                font-size: 1.1rem;
+            }
+
+            .stat-value {
+                font-size: 2rem;
+            }
+
+            .statement {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="site-header">
+        <a href="index.html">
+            <img src="logo/zylch-horizontal.svg" alt="Zylch" class="header-logo">
+        </a>
+        <a href="https://api.zylchai.com/api/auth/oauth/initiate?callback_url=https://app.zylchai.com/auth/callback" class="sign-in-btn">Sign in</a>
+    </header>
+
+    <!-- Section 1: Hero -->
+    <section class="section section-light">
+        <div class="container">
+            <span class="label">How It Works</span>
+            <h1>AI That Acts, Not Just Talks</h1>
+
+            <p class="lead">Zylch isn't a chatbot. It's a complete AI system built from the ground up for business communication.</p>
+
+            <p>While others wrap generic LLMs with thin prompts, we've built proprietary technology that combines the intelligence of modern AI with the reliability your business requires.</p>
+
+            <p class="statement">LLMs can talk. Zylch can work.</p>
+        </div>
+    </section>
+
+    <!-- Section 2: The Architecture -->
+    <section class="section section-dark">
+        <div class="container">
+            <span class="label">Architecture</span>
+            <h2>Neurosymbolic Design</h2>
+
+            <p>Zylch uses a <strong>neurosymbolic architecture</strong>—combining neural networks (LLMs) for understanding with symbolic systems (rules, logic) for reliable execution.</p>
+
+            <div class="arch-diagram">
+                <div class="arch-layers">
+                    <div class="arch-layer user">You: "Remind Sofia about the demo"</div>
+                    <div class="arch-arrow">&darr;</div>
+                    <div class="arch-layer llm">LLM Layer: Understands intent, resolves "Sofia"</div>
+                    <div class="arch-arrow">&darr;</div>
+                    <div class="arch-layer memory">Memory Layer: Retrieves Sofia's Avatar, preferences</div>
+                    <div class="arch-arrow">&darr;</div>
+                    <div class="arch-layer symbolic">Symbolic Layer: Creates rule: IF tomorrow THEN remind</div>
+                    <div class="arch-arrow">&darr;</div>
+                    <div class="arch-layer execution">Execution: Guaranteed delivery (email, WhatsApp, call)</div>
+                </div>
+            </div>
+
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <h3>LLM for Understanding</h3>
+                    <p>Natural language comprehension, intent extraction, context awareness. The AI understands what you want.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Rules for Reliability</h3>
+                    <p>Deterministic execution, conditional logic, state tracking. The system does what it promised.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Memory for Context</h3>
+                    <p>Persistent knowledge about your contacts, preferences, and history. No re-explaining.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Execution for Action</h3>
+                    <p>Real integrations with email, calendar, phone. Not just suggestions—actual results.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Why Not Just LLM -->
+    <section class="section section-light">
+        <div class="container">
+            <h2>Why LLMs Alone Don't Work</h2>
+
+            <p>Large Language Models are remarkable at understanding and generating text. But for business work, they have fundamental limitations:</p>
+
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <h3>No Memory</h3>
+                    <p>LLMs forget everything between sessions. They can't remember "I told you this yesterday."</p>
+                </div>
+                <div class="feature-item">
+                    <h3>No State</h3>
+                    <p>They can't track "wait for response, then do X." Every request starts fresh.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>No Reliability</h3>
+                    <p>Same prompt, different results. You can't build business processes on probabilistic outputs.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>No Action</h3>
+                    <p>They generate text, not results. "Send an email" produces words about emails, not sent emails.</p>
+                </div>
+            </div>
+
+            <p style="margin-top: 2rem;"><strong>Zylch solves each of these:</strong> Our memory system persists knowledge. Our symbolic layer tracks state. Our rule engine guarantees execution. Our integrations take real action.</p>
+        </div>
+    </section>
+
+    <!-- Section 4: Avatar System -->
+    <section class="section section-dark">
+        <div class="container">
+            <span class="label">Proprietary</span>
+            <h2>Avatar Intelligence</h2>
+
+            <p>At the heart of Zylch is our <strong>Avatar system</strong>—pre-computed intelligence about every person you interact with.</p>
+
+            <p>Unlike systems that re-analyze contacts on every query (slow, expensive), Avatars are continuously updated in the background. When you ask "What's happening with Marco?", the answer is instant.</p>
+
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-value">&lt;50ms</div>
+                    <div class="stat-label">Query response<br>100 contacts</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">0</div>
+                    <div class="stat-label">LLM calls<br>at query time</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">&infin;</div>
+                    <div class="stat-label">Memory<br>persistence</div>
+                </div>
+            </div>
+
+            <div class="feature-grid" style="margin-top: 2rem;">
+                <div class="feature-item">
+                    <h3>Multi-Identifier</h3>
+                    <p>One person = multiple emails, phones, names. Avatars understand identity across all channels.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Relationship Context</h3>
+                    <p>Preferred channel, tone, response patterns, pending items, relationship strength—all pre-computed.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Continuous Updates</h3>
+                    <p>New email arrives? Avatar updates automatically. Always fresh, never stale.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Action Detection</h3>
+                    <p>Avatars know who needs attention, who's waiting for response, who's going silent.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5: What Makes Us Different -->
+    <section class="section section-light">
+        <div class="container">
+            <h2>Not a Wrapper</h2>
+
+            <p>Many "AI products" are thin layers over ChatGPT or Claude. Zylch is different.</p>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <span class="year">2021</span>
+                    <p>Hahn Banach founded. Initial research into semantic memory systems for business applications.</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="year">2022</span>
+                    <p>First production deployment of vector-based contact memory. Pre-dates ChatGPT release.</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="year">2023</span>
+                    <p>Multi-agent architecture developed. Neurosymbolic execution framework.</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="year">2024</span>
+                    <p>Avatar system architecture. Background computation pipeline. Legacy system integration.</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="year">2025</span>
+                    <p>Zylch platform launch. Phone integration via MrCall. Production deployment.</p>
+                </div>
+            </div>
+
+            <p style="margin-top: 2rem;"><strong>Years of R&D, not weeks.</strong> Our technology stack is proprietary, purpose-built for communication intelligence.</p>
+        </div>
+    </section>
+
+    <!-- Section 6: Security & Privacy -->
+    <section class="section section-dark">
+        <div class="container">
+            <h2>Your Data, Your Control</h2>
+
+            <p>We take privacy seriously because we handle your most sensitive data: your communication.</p>
+
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <h3>Complete Isolation</h3>
+                    <p>Your data is never mixed with other users. Row-level security enforced at the database layer.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>No Training</h3>
+                    <p>Your emails, contacts, and conversations are never used to train AI models. Ever.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Encryption</h3>
+                    <p>All data encrypted at rest and in transit. Sensitive tokens encrypted with additional application-level encryption.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Human in the Loop</h3>
+                    <p>Critical actions (sending emails, making calls) require your explicit approval.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2>AI That Works</h2>
+            <p>Experience the difference between AI that talks and AI that acts.</p>
+            <a href="index.html" class="cta-button">Get Started</a>
+            <div class="cta-links">
+                <a href="technology.html">Deep Dive: Technology</a>
+                <a href="economy.html">Why Neurosymbolic AI?</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-left">
+            <a href="ai.html">Our AI</a>
+            <a href="technology.html">Technology</a>
+            <a href="build.html">Build</a>
+        </div>
+        <div class="footer-right">
+            <a href="terms.html">Terms</a>
+            <a href="privacy.html">Privacy</a>
+        </div>
+    </footer>
+</body>
+</html>
