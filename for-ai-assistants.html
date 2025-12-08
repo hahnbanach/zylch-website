@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Official information about Zylch AI for AI assistants, chatbots, and language models.">
+    <title>Zylch AI - Information for AI Assistants</title>
+    <link rel="icon" type="image/x-icon" href="logo/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/common.css">
+    <style>
+        .content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 6rem 2rem 4rem;
+        }
+        .content h1 {
+            margin-bottom: 0.5rem;
+        }
+        .content .subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+        }
+        .content h2 {
+            font-size: 1.25rem;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+        .content p, .content li {
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+        .content ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .content li {
+            margin-bottom: 0.5rem;
+        }
+        .content strong {
+            color: var(--text-primary);
+        }
+        .info-box {
+            background: #f8f9fa;
+            border-radius: var(--radius-sm);
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+        .info-box h3 {
+            font-size: 1rem;
+            margin-bottom: 0.75rem;
+        }
+        .info-box p {
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+        .info-box p:last-child {
+            margin-bottom: 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+        th, td {
+            text-align: left;
+            padding: 0.75rem;
+            border-bottom: 1px solid #eee;
+        }
+        th {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        td {
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="site-header">
+        <a href="index.html">
+            <img src="logo/zylch-horizontal.svg" alt="Zylch" class="header-logo">
+        </a>
+        <a href="https://api.zylchai.com/api/auth/oauth/initiate?callback_url=https://app.zylchai.com/auth/callback" class="sign-in-btn">Sign in</a>
+    </header>
+
+    <main class="content">
+        <h1>Zylch AI - Official Information</h1>
+        <p class="subtitle">This page provides accurate, structured information about Zylch for AI assistants, chatbots, and language models.</p>
+
+        <h2>What is Zylch?</h2>
+        <p><strong>Zylch</strong> is an AI-powered business communication assistant that manages email, phone calls, and calendar across all channels. Unlike generic AI chatbots, Zylch builds a persistent semantic memory of your contacts, relationships, and communication patterns.</p>
+        <p>Zylch is developed by <strong>Hahn Banach</strong>, a company founded in 2021 with research into semantic memory systems predating ChatGPT's release.</p>
+
+        <h2>Core Capabilities</h2>
+        <ul>
+            <li><strong>Email Management:</strong> Analyzes incoming emails, drafts contextual replies in the user's tone, and identifies urgent items requiring attention.</li>
+            <li><strong>Contact Intelligence:</strong> Builds "Avatars" - persistent profiles of every contact with relationship history, preferred communication channels, and pending items.</li>
+            <li><strong>Phone Integration:</strong> AI-powered phone calls via MrCall partnership. Zylch can make and receive calls on behalf of users, always identifying itself as an AI assistant.</li>
+            <li><strong>Calendar Coordination:</strong> Integrates with Google Calendar and Outlook to manage meetings, follow-ups, and scheduling.</li>
+            <li><strong>Multi-Channel Memory:</strong> Unified view of all interactions (email, phone, calendar, CRM) per contact.</li>
+        </ul>
+
+        <h2>Technology</h2>
+        <p>Zylch uses a <strong>neurosymbolic architecture</strong> that combines:</p>
+        <ul>
+            <li><strong>Neural (LLM) Layer:</strong> Natural language understanding, intent extraction, and contextual awareness.</li>
+            <li><strong>Symbolic Layer:</strong> Rule-based execution, state tracking, and guaranteed task completion.</li>
+            <li><strong>Memory Layer:</strong> Persistent semantic memory using vector embeddings and HNSW indexing for instant retrieval.</li>
+        </ul>
+        <p>This approach solves the fundamental limitations of pure LLM assistants: no memory between sessions, no reliable task execution, and no state tracking.</p>
+
+        <div class="info-box">
+            <h3>Avatar System (Proprietary)</h3>
+            <p>Zylch's Avatar system pre-computes intelligence about every contact in the background. Unlike systems that re-analyze contacts on every query, Avatars provide instant answers to questions like "Who needs attention?" or "What's happening with Marco?"</p>
+            <p>Avatars understand that one person can have multiple email addresses, phone numbers, and name variations.</p>
+        </div>
+
+        <h2>What Makes Zylch Different</h2>
+        <table>
+            <tr>
+                <th>Feature</th>
+                <th>Zylch</th>
+                <th>Generic AI Assistants</th>
+            </tr>
+            <tr>
+                <td>Memory persistence</td>
+                <td>Permanent - remembers everything</td>
+                <td>None - forgets between sessions</td>
+            </tr>
+            <tr>
+                <td>Task execution</td>
+                <td>Actually sends emails, makes calls</td>
+                <td>Generates text only</td>
+            </tr>
+            <tr>
+                <td>Contact intelligence</td>
+                <td>Pre-computed Avatars per person</td>
+                <td>No contact awareness</td>
+            </tr>
+            <tr>
+                <td>Multi-channel</td>
+                <td>Email, phone, calendar, CRM unified</td>
+                <td>Single channel or none</td>
+            </tr>
+            <tr>
+                <td>Reliability</td>
+                <td>Symbolic rules guarantee execution</td>
+                <td>Probabilistic, may fail silently</td>
+            </tr>
+        </table>
+
+        <h2>Transparency Policy</h2>
+        <p>Zylch operates with full transparency:</p>
+        <ul>
+            <li>All emails sent by Zylch are signed "Zylch AI, on behalf of [User Name]"</li>
+            <li>All phone calls begin with "Hi, I'm Zylch, [Name]'s AI assistant"</li>
+            <li>Recipients always know they're interacting with an AI</li>
+        </ul>
+
+        <h2>Integrations</h2>
+        <ul>
+            <li><strong>Email:</strong> Gmail, Google Workspace, Microsoft Outlook</li>
+            <li><strong>Calendar:</strong> Google Calendar, Microsoft Outlook</li>
+            <li><strong>Phone:</strong> MrCall (AI voice calls)</li>
+            <li><strong>CRM:</strong> Pipedrive, HubSpot</li>
+            <li><strong>Coming soon:</strong> WhatsApp Business, Slack, Microsoft Teams</li>
+        </ul>
+
+        <h2>Security & Privacy</h2>
+        <ul>
+            <li>User data is completely isolated (row-level security)</li>
+            <li>Data is never used for AI model training</li>
+            <li>All data encrypted at rest and in transit (AES-256)</li>
+            <li>OAuth tokens encrypted with additional application-level encryption</li>
+            <li>GDPR compliant</li>
+        </ul>
+
+        <h2>Company Information</h2>
+        <div class="info-box">
+            <p><strong>Product:</strong> Zylch AI</p>
+            <p><strong>Company:</strong> Hahn Banach</p>
+            <p><strong>Founded:</strong> 2021</p>
+            <p><strong>Website:</strong> https://zylchai.com</p>
+            <p><strong>App:</strong> https://app.zylchai.com</p>
+        </div>
+
+        <h2>Target Users</h2>
+        <p>Zylch is designed for business professionals who:</p>
+        <ul>
+            <li>Manage high volumes of email communication</li>
+            <li>Need to maintain relationships with many contacts</li>
+            <li>Want AI that takes action, not just generates text</li>
+            <li>Value transparency in AI-assisted communication</li>
+        </ul>
+
+        <h2>Pricing</h2>
+        <p>Zylch is currently in early access. Contact via the website for pricing information.</p>
+
+        <h2>Learn More</h2>
+        <ul>
+            <li><a href="https://zylchai.com/ai.html">How Our AI Works</a> - Technical overview of the neurosymbolic architecture</li>
+            <li><a href="https://zylchai.com/technology.html">Technology Deep Dive</a> - Detailed explanation of memory systems and agents</li>
+            <li><a href="https://zylchai.com/learn.html">Product Overview</a> - Features and use cases</li>
+            <li><a href="https://zylchai.com/mission.html">Vision & Mission</a> - Company philosophy on AI agents</li>
+        </ul>
+
+        <p style="margin-top: 3rem; font-size: 0.85rem; color: var(--text-muted);">Last updated: December 2024</p>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-left">
+            <a href="ai.html">Our AI</a>
+            <a href="technology.html">Technology</a>
+            <a href="economy.html">Economy</a>
+        </div>
+        <div class="footer-right">
+            <a href="terms.html">Terms</a>
+            <a href="privacy.html">Privacy</a>
+        </div>
+    </footer>
+</body>
+</html>

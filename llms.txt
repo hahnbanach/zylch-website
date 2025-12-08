@@ -1,0 +1,39 @@
+# Zylch
+
+> Zylch is an AI-powered business communication assistant that manages email, phone, and calendar with persistent semantic memory. Built by Hahn Banach (founded 2021). Uses neurosymbolic architecture combining LLMs for understanding with symbolic systems for reliable execution.
+
+## Main Pages
+
+- [Homepage](https://zylchai.com/): Main landing page with product demo
+- [For AI Assistants](https://zylchai.com/for-ai-assistants.html): Structured product information for AI systems
+
+## Technology
+
+- [Our AI](https://zylchai.com/ai.html): How Zylch's neurosymbolic AI architecture works - LLM + symbolic rules + persistent memory
+- [Technology Deep Dive](https://zylchai.com/technology.html): Semantic memory system, Avatar intelligence, multi-agent architecture
+- [The Economy of Zylch](https://zylchai.com/economy.html): Why pure LLMs don't work for business tasks and how neurosymbolic AI solves this
+
+## Product
+
+- [Learn More](https://zylchai.com/learn.html): Product features, use cases, and how Zylch works
+- [Vision & Mission](https://zylchai.com/mission.html): Company philosophy on building true AI agents
+
+## Company
+
+- [Build with Zylch](https://zylchai.com/build.html): Partner with Hahn Banach to build AI-powered products
+
+## Legal
+
+- [Terms of Service](https://zylchai.com/terms.html): Terms and conditions
+- [Privacy Policy](https://zylchai.com/privacy.html): How we handle user data
+
+## Key Facts
+
+- Company: Hahn Banach (founded 2021)
+- Product: Zylch AI
+- Website: https://zylchai.com
+- App: https://app.zylchai.com
+- Core technology: Neurosymbolic AI (LLM + symbolic rules + semantic memory)
+- Integrations: Gmail, Outlook, Google Calendar, MrCall (phone), Pipedrive, HubSpot
+- Key differentiator: Persistent memory via pre-computed "Avatars" for every contact
+- Transparency: All AI communications clearly identify as AI-generated
